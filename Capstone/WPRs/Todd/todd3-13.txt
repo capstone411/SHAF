@@ -1,8 +1,11 @@
-What I have done this week:
+What I have done this week: 
+  I finished the first wearable electrode garment
+  - Performed basic fit testing
+  - Performed basic continuity testing on electrode connections 
 
 
 What I will do next week:
-
+- I will focus on finals this coming week
 
 Any issues or obstacles I had this week:
 
