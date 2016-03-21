@@ -1,0 +1,20 @@
+********************************************************************************
+
+What I have done this week: 
+  
+  Nothing.  Studied for finals and enjoyed the weekend.  :-)
+
+
+What I will do next week:
+
+  Using an oscilloscope, I will verify that the wearble garment produces an 
+  EMG signal similar to the gel electrodes.
+
+  If the garment produces an adequete signal, I will produce another 
+  garment so we have more than one.
+
+
+Any issues or obstacles I had this week:
+  
+  None
+
