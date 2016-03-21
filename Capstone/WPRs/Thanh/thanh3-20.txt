@@ -1,0 +1,8 @@
+What I have done this week:
+- Read the datasheet of MinnowBoard MAX
+- Read the datasheet of Intel Atom E3800
+
+What I will do next week:
+- Find IDE 
+- Write code using ADC feature of the Intel Atom
+- Transfer all the code in Adruino to MinnowBoard MAX (optional)
