@@ -1,0 +1,5 @@
+What I have done this week:
+- Read the datasheet of MinnowBoard MAX
+
+What I will do next week:
+- Read module Bluetooth 

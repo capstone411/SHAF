@@ -1,0 +1,6 @@
+What I have done this week:
+- Work with team to create a test plan
+
+What I will do next week:
+- Read datasheet of MinnowBoard
+- Read datasheet of Intel Atom E3800
