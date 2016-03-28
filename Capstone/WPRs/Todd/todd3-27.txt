@@ -1,0 +1,21 @@
+********************************************************************************
+
+What I have done this week: 
+- Connected the wearable to the muscle sensor and measured the output
+  with a multimeter to verify that a signal is being generated with
+  muscle activation.
+
+What I will do next week:
+- Connect the same wearable/muscle sensor setup to an oscilloscope to
+  capture data
+
+- Compare captured data to older electrode data  
+
+- Make another wearable if the current one is a success, OR,
+  design a different wearble if the current one does not produce
+  acceptable data. 
+
+Any issues or obstacles I had this week:
+- I did not make it to the lab over spring break to use the
+  oscilloscope so I did not accomplish everything I wanted to.
+
