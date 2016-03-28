@@ -1,0 +1,25 @@
+What I have done this week:
+
+- Install Ubuntu 14.04.4 on Minnowboard Max
+- Import mraa library to interface GPIO
+- Write simple code to blink LED
+- Order bluetooth 4.0
+
+
+What I will do next week:
+
+- Write simple code to interface I2C on Minnowboard
+- Figure out bluetooth 4.0 with Minnowboard Max
+
+
+
+Any issues or obstacles I had this week
+
+- There are some problem about downloading file for updating new firmware for MinnowBoard Max
+
+- Stuck in installing Ubuntu and firmware for MinnowBoard Max
+I should boot Ubuntu on USB 2.0 rather than USB 3.0
+
+- There is no Bluetooth module. I try to buy bluetooth version 4.0 to interface with MinnowBoard Max
+
+- I try to connect Bluetooth from my iPhone with my virtual machine (Running Ubuntu), but it does not work.
