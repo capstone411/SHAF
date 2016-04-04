@@ -1,0 +1,12 @@
+What I've done this week:
+- Install Ubuntu 14 into MinnowBoard MAX
+- Install MRAA libarary for all GPIO mapping
+- Write sample codes testing GPIO pins and I2C pins
+
+What I will do next week:
+- Work with analog input
+- Write codes to detect correct reps and fatigue
+
+Obstacle:
+- The connection between HDMI cable with our monitor isn't stable
+- MinnowBoard MAX don't have I/O for analog  
