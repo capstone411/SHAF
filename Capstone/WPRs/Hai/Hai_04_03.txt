@@ -1,0 +1,18 @@
+What I have done this week
+
+Discuss Bluetooth issue with Ahmed and Todd
+Write code bluetooth shield can detect and connect to the iPhone
+
+
+
+What I will do next week:
+
+Order new 4.0 bluetooth supporting UUID for Ahmed's app
+redo again for setting connection between bluetooth shield and iPhone for new board
+
+
+Issues:
+
+The bluetooth shield from seedstudio does not support UUID
+It is not suitable for IOS app because IOS need bluetooth 4.0.
+--> Alternative way: order new bluetooth that support bluetooth 4.0 and UUID 
