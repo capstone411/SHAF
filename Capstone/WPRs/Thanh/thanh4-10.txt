@@ -1,0 +1,9 @@
+What I've done this week:
+- Checking the stability of the signal coming from the sensor for testing experiment 
+- Installing openchoice and necessary drivers to work with oscilloscope that we will borrow from professor Wong
+
+What I will do next week:
+- Working with the testing data to find bugs in my code.
+
+ 
+
