@@ -1,0 +1,13 @@
+What I've done this week:
+- Modified the main program of our project
+- Find a program to communicate with Adruino serially (TeraTerm)
+- Find a solution to compare the analog generating by Adruino with the graph on the oscilloscope (not real time)
+
+What I will do next week:
+- Start testing with test subjects
+- Fix bug if found
+
+Obstacle:
+- Somehow I can't upload my code to Adruino through my usb cable. The temporal fix is using the AVR Dragon ISP
+  in the capstone lab to upload my code.
+ 

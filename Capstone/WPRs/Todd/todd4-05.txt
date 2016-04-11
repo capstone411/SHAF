@@ -1,0 +1,17 @@
+********************************************************************************
+
+What I have done this week: 
+- Discussed experimental setup with Thanh
+- Discussed Bluetooth communication with Ahmed and Hai
+- Created a draft of the Bluetooth UML 
+
+What I will do next week:
+- Finalize design decisions for the experimental setup
+- Finalize design decisions for Bluetooth communication
+- Create protocol-level UML view for experimental setup
+- Create protocol-level UML view for Bluetooth communication
+- Create a right-arm wearable for a smaller arm
+
+Any issues or obstacles I had this week:
+- None
+
