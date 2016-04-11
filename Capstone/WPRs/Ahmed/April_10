@@ -1,0 +1,14 @@
+What I've done this week:
+
+- Helped set up testing the wearable and getting data for next week
+- Ordered new bluetooth 4.0 sheild for arduino
+
+What I'll do next week:
+
+- Keep working on bluetooth communication
+- Test the wearable and get data from around 50 subjects
+
+Issues:
+
+- New bluetooth 4.0 shield is missing some components
+- Need to solder the bluetooth shield (not just something I can attach on the arduino)
