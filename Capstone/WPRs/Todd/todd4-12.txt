@@ -1,0 +1,33 @@
+********************************************************************************
+
+What I have done this week: 
+- Tested the custom wearable with Thanh's experimental setup
+
+- Created an interaction diagram for initiating Bluetooth 
+  communication between our device running on Arduino and an iPhone
+
+- Created a hierarchy of Bluetooth protocols
+
+
+
+What I will do next week:
+- Explore different wearable options.  Leading candidate: integrating
+  the gel electrodes with our wearable to try and clean up the signal
+  to the muscle sensor.
+
+- Explore the possibility of refining the rep and fatigue detection
+  code to be more robust and handle the noisier wearable signal
+
+- Refine the Bluetooth design document and finalize decisions with
+  the group.
+
+- Explore any possible remaining issues or concerns with the 
+  data collection experimental setup.
+
+
+
+Any issues or obstacles I had this week:
+- The custom-made wearable produces a noisier and more variable
+  signal compared to the gel electrodes.  It does not work well when
+  used with the current rep-counting and fatigue-checking software.
+
