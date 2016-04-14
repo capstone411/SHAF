@@ -1,0 +1,22 @@
+Arduino/iPhone Bluetooth Testing Plan
+
+General Plan
+
+1)  Initialize BT on Arduino to advertise a service with at least one 
+    data characteristic and at least one control characteristic
+
+2)  Pair an iPhone with the Arduino via the service
+
+3)  Using the iPhone, start a data producing program on the Arduino via
+    the control characteristic 
+
+4)  The data producing program on the Arduino will update the data 
+    characteristic of the service
+
+5)  Observe the updates to the data characteristic on the iPhone
+
+6)  Using the iPhone, stop the data producing program on the Arduino
+    via the control characteristic
+
+7)  Observe the lack of updates to the data characteristic on the iPhone
+
