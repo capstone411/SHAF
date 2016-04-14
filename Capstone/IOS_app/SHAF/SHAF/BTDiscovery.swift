@@ -11,10 +11,11 @@ import CoreBluetooth
 
 let BLEDiscovery = BTDiscovery()
 
-let SHAF_SERVICE_UUID = CBUUID(string: "F000AA00-0451-4000-B000-000000000000")
-let REP_COUNT_CHARACTERISTIC_UUID = CBUUID(string: "F000AA00-0451-4000-B000-000000000000")
+let SHAF_SERVICE_UUID = CBUUID(string: "180D")
+let REP_COUNT_CHARACTERISTIC_UUID = CBUUID(string: "2a37")
 let FATIGUE_CHARACTERISTIC_UUID = CBUUID(string: "F000AA00-0451-4000-B000-000000000000")
 let START_CHARACTERISTIC_UUID = CBUUID(string: "F000AA00-0451-4000-B000-000000000000")
+
 
 class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     
@@ -23,7 +24,7 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     private var discoveredDevices = [String]()    // a list of discovered devices
     private var peripherals = [CBPeripheral]()    // a list of all peripheral objects
     private var isConnected: Bool?                // flag to indicate connection
-    private var UUIDs = [String: [String]]()        // a dictionary of UUIDs
+    private var UUIDs = [String: [String]]()      // a dictionary of UUIDs
     
     
     var devicesDiscovered: [String] {
@@ -52,8 +53,6 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         // stop scanning to save power
         self.centralManager!.stopScan()
         
-        print(peripheral)
-        
         self.peripheralBLE = self.peripherals[peripheral]
         self.peripheralBLE?.delegate = self;
         self.centralManager?.connectPeripheral(self.peripheralBLE!, options: nil)
@@ -76,7 +75,6 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
             self.peripherals += [peripheral];
             NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
         }
-        print(self.discoveredDevices)
     }
     
     
@@ -99,10 +97,9 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         // go through services and find the one we want
         // then discover the characteristics of that service
         for service in peripheral.services! {
-            print(service)
-            //if service.UUID == SHAF_SERVICE_UUID {
+            if service.UUID == SHAF_SERVICE_UUID {
                 peripheral.discoverCharacteristics(nil, forService: service)
-            //}
+            }
         }
     }
     
@@ -115,7 +112,6 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         
         
         for characteristic in service.characteristics! {
-            print(characteristic)
             // for Rep count, this will set it so that I'll get notified
             // whenever the value of reps change
             if characteristic.UUID == REP_COUNT_CHARACTERISTIC_UUID {
@@ -136,11 +132,17 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
         
-        print("Characteristic --> ", characteristic, " Just updated value")
+        var reps: NSInteger = 0
+        
+        print("Characteristic --> ", characteristic.UUID.description, " Just updated value")
         
         if characteristic.UUID == REP_COUNT_CHARACTERISTIC_UUID {
             
-            print("Rep Count: ", characteristic.value)
+            let data = characteristic.value
+            let dataLength = data?.length
+            characteristic.value?.getBytes(&reps, length: dataLength!)
+            
+            print("Rep Count: ",  characteristic.value)
             
         }
         else if characteristic.UUID == FATIGUE_CHARACTERISTIC_UUID {
