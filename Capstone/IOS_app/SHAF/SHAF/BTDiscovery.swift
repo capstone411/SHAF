@@ -73,7 +73,7 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         if ((discoveredDeviceName != nil) && !(self.discoveredDevices.contains(discoveredDeviceName!))) {
             self.discoveredDevices += [discoveredDeviceName as String!]
             self.peripherals += [peripheral];
-            NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
+            NSNotificationCenter.defaultCenter().postNotificationName("discoveredPeriph", object: nil)
         }
     }
     
@@ -82,6 +82,7 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         self.isConnected = true
         print("Connected to ", peripheral.name);
         peripheral.discoverServices(nil) // discover services
+        NSNotificationCenter.defaultCenter().postNotificationName("periphConnected", object: nil)
     }
     
     
@@ -92,7 +93,7 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     
     func peripheral(peripheral: CBPeripheral, didDiscoverServices error: NSError?) {
-        print("Discovered services for peripheral -> ", peripheral)
+        print("Discovered services for peripheral -> ", peripheral.name)
         
         // go through services and find the one we want
         // then discover the characteristics of that service
@@ -123,6 +124,7 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
                 self.peripheralBLE?.setNotifyValue(true, forCharacteristic: characteristic)
             }
             
+            // this is for the start button
             else if characteristic.UUID == START_CHARACTERISTIC_UUID {
                 self.peripheralBLE?.writeValue(startByte, forCharacteristic: characteristic, type: CBCharacteristicWriteType.WithResponse)
             }
@@ -150,5 +152,4 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
             print("Fatigue value: ", characteristic.value)
         }
     }
-
 }

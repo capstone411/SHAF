@@ -21,7 +21,10 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.bluetoothTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "BLCell")
         
         // to update table view notification
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FirstViewController.loadList(_:)),name:"load", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FirstViewController.loadList(_:)),name:"discoveredPeriph", object: nil)
+        
+        // notify when connected
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FirstViewController.periphConnected(_:)),name:"periphConnected", object: nil)
         
         self.connectButton.enabled = false
         
@@ -29,11 +32,19 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     }
     
-    func loadList(notification: NSNotification){
+    // load bluetooth table
+    func loadList(notification: NSNotification) {
         //load data here
         dispatch_sync(dispatch_get_main_queue()) {
              self.bluetoothTable.reloadData()
             }
+    }
+    
+    // executes when peripheral is connected
+    func periphConnected(notification: NSNotification) {
+        dispatch_sync(dispatch_get_main_queue()) {
+            self.performSegueWithIdentifier("selectGoalIdentifier", sender: nil)
+        }
     }
     
     @IBAction func connectButton(sender: AnyObject) {
