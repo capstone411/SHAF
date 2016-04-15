@@ -10,6 +10,8 @@ import UIKit
 
 class LiveViewController: UIViewController {
 
+    @IBOutlet weak var NumReps: UILabel!
+    @IBOutlet weak var RepCount: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,7 +25,8 @@ class LiveViewController: UIViewController {
     
 
     func repChanged(repNum: Int) {
-        
+        // update value of rep count label
+        self.RepCount.text = String(repNum)
     }
     
     func fatigue () {
