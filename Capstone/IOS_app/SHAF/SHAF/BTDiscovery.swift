@@ -145,10 +145,11 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
             characteristic.value?.getBytes(&reps, length: dataLength!)
             
             print("Rep Count: ",  characteristic.value)
+            NSNotificationCenter.defaultCenter().postNotificationName("repCountChanged", object: nil, userInfo: ["repCount": characteristic.value!])
             
         }
         else if characteristic.UUID == FATIGUE_CHARACTERISTIC_UUID {
-            
+            NSNotificationCenter.defaultCenter().postNotificationName("fatigue", object: nil)
             print("Fatigue value: ", characteristic.value)
         }
     }
