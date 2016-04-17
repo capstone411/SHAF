@@ -1,0 +1,13 @@
+What I have done this week:
+- Documentation about how bluetooth work
+- create a simple sever and a simple characteristic
+- Write a simple demo code, update the value of characteristic and send the value to Ahmed's app
+What I will do next week:
+
+- Find the way to create the log file from terminal to compare result between sent data and receive data
+- Dicuss with Thanh about characteristic and communication between muscle sensor and bluetooth
+
+Issues
+
+- Need to solder the bluetooth shiled
+- Need to configurate Pin SPI for interface between Arduino and Bluetooth shield
