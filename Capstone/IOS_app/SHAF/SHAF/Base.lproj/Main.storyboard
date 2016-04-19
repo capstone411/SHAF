@@ -100,6 +100,24 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RMq-ZJ-3lr">
                                 <rect key="frame" x="46" y="90" width="287" height="456"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BLCell" id="Hr0-Md-IWq" customClass="BluetoothTableCellTableViewCell" customModule="SHAF" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="287" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hr0-Md-IWq" id="OVE-b3-V3f">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i4d-G2-482">
+                                                    <rect key="frame" x="238" y="-1" width="49" height="43.5"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="checkMarkImage" destination="i4d-G2-482" id="OJv-Pz-kG6"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="hRW-l9-9HZ" id="MzV-8c-KPS"/>
                                     <outlet property="delegate" destination="hRW-l9-9HZ" id="pnl-i0-K84"/>
@@ -115,6 +133,9 @@
                                     <action selector="connectButton:" destination="hRW-l9-9HZ" eventType="touchUpInside" id="k9I-lf-gAD"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="5Dn-Uj-Evv">
+                                <rect key="frame" x="111" y="569" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -122,6 +143,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="bluetoothTable" destination="RMq-ZJ-3lr" id="hOT-e5-o7U"/>
+                        <outlet property="buttonActivityIndicator" destination="5Dn-Uj-Evv" id="FBk-a4-sUB"/>
                         <outlet property="connectButton" destination="0Qy-Bl-OZm" id="bAr-4j-2GY"/>
                         <segue destination="HxP-bB-bJp" kind="show" identifier="selectGoalIdentifier" id="tI3-mM-zw9"/>
                     </connections>
@@ -285,12 +307,21 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="doh-8A-MN8">
+                                <rect key="frame" x="66" y="505" width="212" height="30"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <state key="normal" title="I'm done!"/>
+                                <connections>
+                                    <action selector="doneButtonClicked:" destination="Foj-eq-nb5" eventType="touchUpInside" id="pve-jR-Rc3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="RepCount" destination="bQJ-EU-Hkm" id="Ml6-t6-Oyf"/>
+                        <outlet property="doneButton" destination="doh-8A-MN8" id="fJs-fL-wBj"/>
                         <outlet property="fatigueCheckBox" destination="KyW-e9-fTK" id="nlk-9x-AR8"/>
                         <outlet property="fatigueLabel" destination="PwF-JH-Gf6" id="Ny8-R7-zwL"/>
                     </connections>

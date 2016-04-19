@@ -13,6 +13,7 @@ class LiveViewController: UIViewController {
     @IBOutlet weak var RepCount: UILabel!
     @IBOutlet weak var fatigueCheckBox: UIImageView!
     @IBOutlet weak var fatigueLabel: UILabel!
+    @IBOutlet weak var doneButton: UIButton!
     private var fatigued = false
     
     override func viewDidLoad() {
@@ -69,6 +70,16 @@ class LiveViewController: UIViewController {
             self.fatigued = true
         }
     }
+    
+    @IBAction func doneButtonClicked(sender: AnyObject) {
+        // send stop signal
+        
+        // go to next view controller to display
+        // number of reps, time it took to perform
+        // the reps and when they reached fatigue
+    }
+    
+    
     /*
     // MARK: - Navigation
 

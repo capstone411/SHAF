@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		731AA82E1CC49F5E00388D94 /* BluetoothTableCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731AA82D1CC49F5E00388D94 /* BluetoothTableCellTableViewCell.swift */; };
 		735BC4431CC0D90D00B11406 /* SelectMuscleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735BC4421CC0D90D00B11406 /* SelectMuscleTableViewController.swift */; };
 		735BC4451CC0DA9D00B11406 /* SelectExerciseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735BC4441CC0DA9D00B11406 /* SelectExerciseTableViewController.swift */; };
 		735BC4471CC0DCA800B11406 /* ReadyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735BC4461CC0DCA800B11406 /* ReadyViewController.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		731AA82D1CC49F5E00388D94 /* BluetoothTableCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothTableCellTableViewCell.swift; sourceTree = "<group>"; };
 		735BC4421CC0D90D00B11406 /* SelectMuscleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectMuscleTableViewController.swift; sourceTree = "<group>"; };
 		735BC4441CC0DA9D00B11406 /* SelectExerciseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectExerciseTableViewController.swift; sourceTree = "<group>"; };
 		735BC4461CC0DCA800B11406 /* ReadyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadyViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				737ABA7B1CBE40BB0012CE90 /* Bluetooth */,
 				73ADA7DD1CBDCB680059E6AC /* AppDelegate.swift */,
 				73ADA7DF1CBDCB680059E6AC /* FirstViewController.swift */,
+				731AA82D1CC49F5E00388D94 /* BluetoothTableCellTableViewCell.swift */,
 				73ADA7E11CBDCB680059E6AC /* SecondViewController.swift */,
 				73ADA7E31CBDCB680059E6AC /* Main.storyboard */,
 				73ADA7E61CBDCB680059E6AC /* Assets.xcassets */,
@@ -291,6 +294,7 @@
 				735BC4471CC0DCA800B11406 /* ReadyViewController.swift in Sources */,
 				735BC4431CC0D90D00B11406 /* SelectMuscleTableViewController.swift in Sources */,
 				73ADA7E21CBDCB680059E6AC /* SecondViewController.swift in Sources */,
+				731AA82E1CC49F5E00388D94 /* BluetoothTableCellTableViewCell.swift in Sources */,
 				73ADA7DE1CBDCB680059E6AC /* AppDelegate.swift in Sources */,
 				735BC4451CC0DA9D00B11406 /* SelectExerciseTableViewController.swift in Sources */,
 				737ABA7D1CBE43CB0012CE90 /* BTDiscovery.swift in Sources */,
