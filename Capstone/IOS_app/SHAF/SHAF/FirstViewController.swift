@@ -29,6 +29,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         self.connectButton.enabled = false
         
+        // activity view in the connect button
         self.buttonActivityIndicator.hidden = true
         
         BLEDiscovery // start bluetooth

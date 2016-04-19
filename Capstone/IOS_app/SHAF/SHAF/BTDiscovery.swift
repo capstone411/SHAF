@@ -25,6 +25,7 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     private var peripherals = [CBPeripheral]()    // a list of all peripheral objects
     private var isConnected: Bool?                // flag to indicate connection
     private var UUIDs = [String: [String]]()      // a dictionary of UUIDs
+    private var service: CBService?
     
     
     var devicesDiscovered: [String] {
@@ -56,6 +57,27 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         self.peripheralBLE = self.peripherals[peripheral]
         self.peripheralBLE?.delegate = self;
         self.centralManager?.connectPeripheral(self.peripheralBLE!, options: nil)
+    }
+    
+    func startReceivingData() {
+        
+        let chars = self.service?.characteristics
+        
+        if chars == nil {
+            return
+        }
+        
+        // 0x01 data byte to let the peripheral start sending data
+        var startValue = 1
+        let startByte = NSData(bytes: &startValue, length: sizeof(UInt8))
+        
+        for characteristic in chars! {
+            if characteristic.UUID == START_CHARACTERISTIC_UUID {
+                self.peripheralBLE?.writeValue(startByte, forCharacteristic: characteristic, type: CBCharacteristicWriteType.WithResponse)
+                break
+            }
+        }
+ 
     }
 
     
@@ -99,6 +121,7 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         // then discover the characteristics of that service
         for service in peripheral.services! {
             if service.UUID == SHAF_SERVICE_UUID {
+                self.service = service
                 peripheral.discoverCharacteristics(nil, forService: service)
             }
         }
