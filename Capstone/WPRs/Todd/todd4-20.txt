@@ -1,0 +1,26 @@
+******************************************************************************
+
+
+What I have done this week: 
+- Alternative wearable 
+  - Created a new wearable using the premade gel electrodes
+  - Performs no better than the original wearable with fabric electrodes
+  - Found that wetting the conductive fabric greatly reduces noise in the 
+    EMG signal.
+
+- Contacted the rec center and setup a time to gather experimental data
+
+- Began to port Thanh's algorithm into MATLAB
+
+- Revised the testing plan to include more specifics and update information
+
+
+What I will do next week:
+- Go to the rec center on Friday with the team and collect data
+
+- Finish the MATLAB port of the algorithm
+
+
+Any issues or obstacles I had this week:
+- Need to clarify the format of ADC values in the algorithm (float OR int?)
+
