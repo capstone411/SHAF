@@ -1,0 +1,8 @@
+What I've done this week:
+- Creating Arduino program for testing experiment
+- Fixing the frequency problem for ADC
+
+What I will do next week:
+- Working with Hai for combining my code with his bluetooth code
+- Going to REC center for testing experiment
+
