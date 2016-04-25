@@ -1,0 +1,13 @@
+What I have done this week:
+
+- Discuss with Thanh about overall bluetooth communication with ADC sensor
+- BLD can receive data from App's Ahmed
+
+What I will do next week
+
+- Take experiment at Rec centor on Friday
+- Finish start, reset characteristic of bluetooth
+
+Issues:
+- give permission write for Ahmed's app. 
+- cannot read data from Ahmed's app
