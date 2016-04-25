@@ -1,0 +1,13 @@
+What I've done this week:
+
+- Bluetooth document of UUIDs
+- Hand shaking in bluetooth is achieved
+
+What I'll do next week:
+
+- Keep working on the app and add more error checking
+- Test the app 
+
+Issues:
+
+- Hai is having trouble assigning the value I send him through bluetooth. He can only print it on Putty
