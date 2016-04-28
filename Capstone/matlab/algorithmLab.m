@@ -113,9 +113,6 @@ clearvars filename startRow endRow formatSpec fileID dataArray ans raw col numer
 %% Convert floating voltage to integer voltage
 data = round(data / VOLTAGE_SOURCE * ADC_BITS);
 
-% % REMOVE ME!
-% data = data(1:5500);
-
 if DEBUG_ON
     for i = 1:numel(data)
        if isnan(data(i))
@@ -123,16 +120,11 @@ if DEBUG_ON
        end
     end
 end
-% 
-% % Fix NaNs
-% for i = 1:numel(data)
-%    if isnan(data(i))
-%        data(i) = 0;
-%    end
-% end
 
+%% Create plot and hold on to add debugging marks
 plot(data)
 hold on
+
 %% Detect reps and fatigue
 for i = 1:numel(data)
     if data(i) > BASELINE
