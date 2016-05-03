@@ -1,0 +1,25 @@
+******************************************************************************
+
+What I have done this week: 
+- MATLAB
+  - Got the rep and fatigue detection algorithm in a functional state
+  - Set up a script that can run all the Arduino data through the algorithm
+    and generate a basic report
+
+
+What I will do next week:
+- MATLAB
+  - Decide on a method for setting the rep detection voltage threshold for 
+    each data set
+  - Improve the batch processing report to help with refining the algorithm
+
+
+Any issues or obstacles I had this week:
+- MATLAB
+  - The rep detection algorithm depends on a voltage threshold value which is
+    presumably set during a calibration phase.  Our data collected from the
+    rec center does not have this calibration rep included.  My solution right
+    now is to use the first rep detected as a sort of calibration.  I will 
+    discuss the matter further with the team at our next meeting.
+
+******************************************************************************
