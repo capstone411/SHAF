@@ -116,7 +116,7 @@ data = round(data / VOLTAGE_SOURCE * ADC_BITS);
 if DEBUG_ON
     for i = 1:numel(data)
        if isnan(data(i))
-           fprintf('sample %d = NaN\n',i)
+           fprintf('\tsample %d = NaN\n',i)
        end
     end
 end
