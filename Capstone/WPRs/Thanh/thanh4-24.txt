@@ -1,0 +1,8 @@
+What I've done this week:
+- Redesigning the document for connection between arduino and iphone application
+- Getting testing data in REC center
+
+What I will do next week:
+- Getting testing data in Circuit Lounge
+- Improved/changed the algorithm if it's necessary
+
