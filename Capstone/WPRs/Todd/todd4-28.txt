@@ -19,8 +19,8 @@ What I will do next week:
 
 Any issues or obstacles I had this week:
 - MATLAB
-  - The data import needs to be more robust, right now it is fairly customized for
-    one particular data set (s1_L1_G_M_Y_25_25.txt).
+  - The data import needs to be more robust, right now it is fairly customized 
+    for one particular data set (s1_L1_G_M_Y_25_25.txt).
   - The algorithm isn't correctly counting reps right now.
     I suspect the baseline and/or threshold variables, but need to do a
     code review with the team to find the problem.

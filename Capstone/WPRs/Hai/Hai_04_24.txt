@@ -1,0 +1,9 @@
+What I have done this week:
+- Getting testing data in REC center
+- Update some information about bluetooth
+
+What I will do next week:
+
+- Getting testing data in Circuit lounge
+- Read the data from iPhone
+
