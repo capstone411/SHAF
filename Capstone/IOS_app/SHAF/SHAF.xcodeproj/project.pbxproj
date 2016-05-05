@@ -14,6 +14,7 @@
 		735BC4491CC0DF9100B11406 /* LiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735BC4481CC0DF9100B11406 /* LiveViewController.swift */; };
 		736F8EF91CC043D0009867D2 /* SelectGoalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736F8EF81CC043D0009867D2 /* SelectGoalTableViewController.swift */; };
 		737ABA7D1CBE43CB0012CE90 /* BTDiscovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737ABA7C1CBE43CB0012CE90 /* BTDiscovery.swift */; };
+		73AB3C2D1CC780B00023B83C /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AB3C2C1CC780B00023B83C /* VideoViewController.swift */; };
 		73ADA7DE1CBDCB680059E6AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ADA7DD1CBDCB680059E6AC /* AppDelegate.swift */; };
 		73ADA7E01CBDCB680059E6AC /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ADA7DF1CBDCB680059E6AC /* FirstViewController.swift */; };
 		73ADA7E21CBDCB680059E6AC /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ADA7E11CBDCB680059E6AC /* SecondViewController.swift */; };
@@ -49,6 +50,7 @@
 		735BC4481CC0DF9100B11406 /* LiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveViewController.swift; sourceTree = "<group>"; };
 		736F8EF81CC043D0009867D2 /* SelectGoalTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectGoalTableViewController.swift; sourceTree = "<group>"; };
 		737ABA7C1CBE43CB0012CE90 /* BTDiscovery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTDiscovery.swift; sourceTree = "<group>"; };
+		73AB3C2C1CC780B00023B83C /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		73ADA7DA1CBDCB680059E6AC /* SHAF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SHAF.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73ADA7DD1CBDCB680059E6AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73ADA7DF1CBDCB680059E6AC /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				735BC4421CC0D90D00B11406 /* SelectMuscleTableViewController.swift */,
 				735BC4461CC0DCA800B11406 /* ReadyViewController.swift */,
 				735BC4481CC0DF9100B11406 /* LiveViewController.swift */,
+				73AB3C2C1CC780B00023B83C /* VideoViewController.swift */,
 			);
 			path = SHAF;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				731AA82E1CC49F5E00388D94 /* BluetoothTableCellTableViewCell.swift in Sources */,
 				73ADA7DE1CBDCB680059E6AC /* AppDelegate.swift in Sources */,
 				735BC4451CC0DA9D00B11406 /* SelectExerciseTableViewController.swift in Sources */,
+				73AB3C2D1CC780B00023B83C /* VideoViewController.swift in Sources */,
 				737ABA7D1CBE43CB0012CE90 /* BTDiscovery.swift in Sources */,
 				73ADA7E01CBDCB680059E6AC /* FirstViewController.swift in Sources */,
 				735BC4491CC0DF9100B11406 /* LiveViewController.swift in Sources */,

@@ -54,20 +54,33 @@ class LiveViewController: UIViewController {
 
     func repChanged(notification: NSNotification) {
         // update value of rep count label
-        self.RepCount.text = notification.userInfo?["repCount"] as? String
+        dispatch_async(dispatch_get_main_queue()) {
+            print("inside repChanged function")
+            //self.RepCount.text = notification.userInfo?["repCount"] as? String
+        
+            print(notification.userInfo?["repCount"] as! String)
+            self.RepCount.text = notification.userInfo?["repCount"] as? String
+       
+            if (notification.userInfo?["repCount"] as! String == "10") {
+                self.fatigue()
+            }
+        }
+        //self.RepCount.text = notification.userInfo?["repCount"] as! String
     }
     
     func fatigue () {
-        // check if fatigue
-        if self.fatigued {
-            self.fatigueCheckBox.hidden = true
-            self.fatigueLabel.hidden = true
-            self.fatigued = false
-        }
-        else {
-            self.fatigueCheckBox.hidden = false
-            self.fatigueLabel.hidden = false
-            self.fatigued = true
+        dispatch_async(dispatch_get_main_queue()) {
+            // check if fatigue
+            if self.fatigued {
+                self.fatigueCheckBox.hidden = true
+                self.fatigueLabel.hidden = true
+                self.fatigued = false
+            }
+            else {
+                self.fatigueCheckBox.hidden = false
+                self.fatigueLabel.hidden = false
+                self.fatigued = true
+            }
         }
     }
     

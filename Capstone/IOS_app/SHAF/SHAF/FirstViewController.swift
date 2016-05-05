@@ -84,7 +84,6 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //let cell : UITableViewCell = self.bluetoothTable.dequeueReusableCellWithIdentifier("BLCell")! as UITableViewCell
         let cell : BluetoothTableCellTableViewCell = self.bluetoothTable.dequeueReusableCellWithIdentifier("BLCell")! as! BluetoothTableCellTableViewCell
         
         let cellName = BLEDiscovery.devicesDiscovered[indexPath.row]
@@ -93,7 +92,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         // check if this is the bluetooth device and add
         // check mark next to it 
-        if cellName == "Ahmed’s MacBook Pro" {
+        if cellName == "SHAF Bluetooth" {
             cell.checkMarkImage.hidden = false
         }
         

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class SelectExerciseTableViewController: UITableViewController {
     
@@ -50,7 +51,7 @@ class SelectExerciseTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("readyIdentifier", sender: nil)
+        performSegueWithIdentifier("videoIdentifier", sender: nil)
     }
     
 
@@ -89,14 +90,17 @@ class SelectExerciseTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        let destinaion = segue.destinationViewController as! VideoViewController
+        let videoURL = NSURL(string: "https://github.com/capstone411/SHAF/blob/master/Capstone/exerciseVideos/Exercise_Guides_Alternate_Hammer_Curl_MaleShort_Clip.mp4")
+        destinaion.player = AVPlayer(URL: videoURL!)
     }
-    */
+    
 
 }

@@ -241,7 +241,7 @@
                     </tableView>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <segue destination="dLY-nT-t0A" kind="show" identifier="readyIdentifier" id="EQO-4B-c9x"/>
+                        <segue destination="BGu-qK-yoC" kind="show" identifier="videoIdentifier" id="OBr-yS-xXc"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dAq-ai-2jN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -277,6 +277,28 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pWS-uo-wOn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2863.5" y="-344.5"/>
+        </scene>
+        <!--Video View Controller-->
+        <scene sceneID="ggF-hg-I9W">
+            <objects>
+                <viewController id="BGu-qK-yoC" customClass="VideoViewController" customModule="SHAF" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4ij-5L-5Hi"/>
+                        <viewControllerLayoutGuide type="bottom" id="9L3-cS-tKL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UbD-Iq-0Wd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <segue destination="dLY-nT-t0A" kind="show" identifier="readyIdentifier" id="g28-x9-k66"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L9R-tM-6WK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2393.5" y="-344.5"/>
         </scene>
@@ -328,7 +350,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zvf-6W-bpz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2903.5" y="-344.5"/>
+            <point key="canvasLocation" x="3355.5" y="-344.5"/>
         </scene>
     </scenes>
     <resources>

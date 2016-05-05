@@ -7,18 +7,33 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
 
 class VideoViewController: UIViewController {
+    
+    var player: AVPlayer?
+    let playerController = AVPlayerViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        loadVideo()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func loadVideo() {
+        performSegueWithIdentifier("readyIdentifier", sender: nil)
+        //self.playerController.player = self.player
+        //self.addChildViewController(self.playerController)
+        //self.view.addSubview(self.playerController.view)
+        //self.playerController.view.frame = self.view.frame
+        //self.player?.play()
     }
     
 

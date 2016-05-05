@@ -14,7 +14,7 @@ let BLEDiscovery = BTDiscovery()
 let SHAF_SERVICE_UUID = CBUUID(string: "180D")
 let REP_COUNT_CHARACTERISTIC_UUID = CBUUID(string: "2a37")
 let FATIGUE_CHARACTERISTIC_UUID = CBUUID(string: "F000AA00-0451-4000-B000-000000000000")
-let START_CHARACTERISTIC_UUID = CBUUID(string: "F000AA00-0451-4000-B000-000000000000")
+let START_CHARACTERISTIC_UUID = CBUUID(string: "2a38")
 
 
 class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
@@ -61,8 +61,10 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     func startReceivingData() {
         
+        // get characteristic from current service
         let chars = self.service?.characteristics
         
+        // make sure its not empty
         if chars == nil {
             return
         }
@@ -71,6 +73,7 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         var startValue = 1
         let startByte = NSData(bytes: &startValue, length: sizeof(UInt8))
         
+        // loop through characteristics to find the right one
         for characteristic in chars! {
             if characteristic.UUID == START_CHARACTERISTIC_UUID {
                 self.peripheralBLE?.writeValue(startByte, forCharacteristic: characteristic, type: CBCharacteristicWriteType.WithResponse)
@@ -110,7 +113,7 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     func centralManager(central: CBCentralManager, didFailToConnectPeripheral peripheral: CBPeripheral, error: NSError?) {
         self.isConnected = false
-        print("Failed to connect to peripheral -> ", error)
+        print("Failed to connect to peripheral -> ", error?.description)
     }
     
     
@@ -131,17 +134,21 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     func peripheral(peripheral: CBPeripheral, didDiscoverCharacteristicsForService service: CBService, error: NSError?) {
         
         // 0x01 data byte to let the peripheral start sending data
-        var startValue = 1
+        var startValue = 7
         let startByte = NSData(bytes: &startValue, length: sizeof(UInt8))
-        
         
         for characteristic in service.characteristics! {
             // for Rep count, this will set it so that I'll get notified
             // whenever the value of reps change
             if characteristic.UUID == REP_COUNT_CHARACTERISTIC_UUID {
                 self.peripheralBLE?.setNotifyValue(true, forCharacteristic: characteristic)
+                //self.peripheralBLE?.writeValue(startByte, forCharacteristic: characteristic, type: CBCharacteristicWriteType.WithResponse)
+                
+                
+                //print(characteristic.properties)
             }
             
+                /*
             // do same for this fatigue flag
             else if characteristic.UUID == FATIGUE_CHARACTERISTIC_UUID {
                 self.peripheralBLE?.setNotifyValue(true, forCharacteristic: characteristic)
@@ -151,13 +158,28 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
             else if characteristic.UUID == START_CHARACTERISTIC_UUID {
                 self.peripheralBLE?.writeValue(startByte, forCharacteristic: characteristic, type: CBCharacteristicWriteType.WithResponse)
             }
+               */
+        }
+    }
+    
+    
+    
+    func peripheral(peripheral: CBPeripheral, didWriteValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
+        if (error != nil) {
+            print("Error writing a value --> ", error?.description.debugDescription)
+        }
+        else {
+            print("Successfully wrote value")
         }
     }
     
     
     func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
         
-        var reps: NSInteger = 0
+        //var reps: NSInteger?
+        
+        var startValue = 1
+        let startByte = NSData(bytes: &startValue, length: sizeof(UInt8))
         
         print("Characteristic --> ", characteristic.UUID.description, " Just updated value")
         
@@ -165,10 +187,17 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
             
             let data = characteristic.value
             let dataLength = data?.length
-            characteristic.value?.getBytes(&reps, length: dataLength!)
-            
-            print("Rep Count: ",  characteristic.value)
-            NSNotificationCenter.defaultCenter().postNotificationName("repCountChanged", object: nil, userInfo: ["repCount": characteristic.value!])
+            var repsArray = [UInt8](count: dataLength!, repeatedValue: 0)
+            //characteristic.value?.getBytes(&reps, length: dataLength!)
+            //print(reps)
+            data!.getBytes(&repsArray, length: dataLength! * sizeof(UInt8))
+            //print("Rep Count: ",  characteristic.value)
+            print("Rep Count: ",  repsArray)
+            let repValue = Double(repsArray[1])
+            let repString = NSString(format: "%.0f", repValue)
+            //print(repString)
+            //NSNotificationCenter.defaultCenter().postNotificationName("repCountChanged", object: nil, userInfo: ["repCount": characteristic.value!])
+            NSNotificationCenter.defaultCenter().postNotificationName("repCountChanged", object: nil, userInfo: ["repCount": repString])
             
         }
         else if characteristic.UUID == FATIGUE_CHARACTERISTIC_UUID {
