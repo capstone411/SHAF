@@ -1,21 +1,13 @@
-clf
+tic
+%clf
 clc
 clear
-
 
 % Defining "Constants"
 ADC_BITS = 1024;
 VOLTAGE_SOURCE = 5;
 FATIGUE_PERCENT = 0.17;
 BASELINE = 50; 
-
-% Quasi-Constant, needs calibration for each subject.
-% Choosing value for now until programmatic solution developed
-THRESHOLD_VOLTAGE = 100;
-
-
-
-
 
 %% Create string array of text files name in the folder
 textFileNames = dir('*.txt');
@@ -24,10 +16,16 @@ textFileNames = dir('*.txt');
 dataZeros = zeros(length(textFileNames),1);
 dataMeans = zeros(length(textFileNames),1);
 dataMedians = zeros(length(textFileNames),1);
-
+dataMaximums = zeros(length(textFileNames),1);
+dataMinimums = zeros(length(textFileNames),1);
+dataReps = zeros(length(textFileNames),1);
+dataFatigued = zeros(length(textFileNames),1);
 
 %% Loop to process all raw Arduino data 
 for i = 1:length(textFileNames)
+
+    % Clear previous plot
+    clf
 
     %% Look at next text file in directory
     filename = textFileNames(i).name;
@@ -100,7 +98,11 @@ for i = 1:length(textFileNames)
     data = data(4:end);
 
     %% Convert from floating-point to integer
-    data = round(data / VOLTAGE_SOURCE * ADC_BITS);
+    data = min(1023, floor(data / VOLTAGE_SOURCE * ADC_BITS));
+    
+    %% Plot Data
+    plot(data)
+    hold on
     
     %% Variables for algorithm
     repEdge = 0;  % 1=pos_edge; 0=neg_edge 
@@ -113,6 +115,10 @@ for i = 1:length(textFileNames)
     fatigueFlag = 0;
     repFatigueDetectedOn = 0;
     sampleFatigueDetectedOn = 0;
+    
+    % Quasi-Constant, needs calibration for each subject.
+    % Choosing value for now until programmatic solution developed
+    THRESHOLD_VOLTAGE = 51;
 
     %% Detect reps and fatigue
     for j = 1:numel(data)
@@ -126,15 +132,19 @@ for i = 1:length(textFileNames)
         else
             if maxVoltage >= THRESHOLD_VOLTAGE  
                 if repEdge
-                    repCount = repCount + 1;
-%                    plot(j,data(j),'rs')
+                     repCount = repCount + 1;
+                     plot(j, data(j), 'rs')
+                    % Using first rep to set threshold voltage by                 
+                    % dividing the first max voltage by sqrt(2)
+                    if repCount == 1;
+                        THRESHOLD_VOLTAGE = floor(maxVoltage/1.4142);
+                    end                     
                     repEdge = 0;
                     maxVoltage = 0;
                 end          
                 previousPeakVoltage = currentPeakVoltage;
                 currentPeakVoltage = maxVoltage;
                 tempPercent = (currentPeakVoltage/previousPeakVoltage) - 1;
-
                 if tempPercent > FATIGUE_PERCENT
                     repFatigueDetectedOn = repCount;
                     sampleFatigueDetectedOn = j;
@@ -149,6 +159,10 @@ for i = 1:length(textFileNames)
     %% DEBUG: Looking at the mean and median of each data set
     dataMeans(i) = mean(data);
     dataMedians(i) = median(data);
+    dataMaximums(i) = max(data);
+    dataMinimums(i) = min(data);
+    dataReps(i) = repCount;
+    dataFatigued(i) = fatigueFlag;
     
     %% Print results
 %     fprintf('%s\n',filename)
@@ -159,8 +173,9 @@ for i = 1:length(textFileNames)
 %     else
 %         fprintf('No\n')
 %     end
-%     fprintf('\tMean voltage:\t%f\n',mean(data))
-%     fprintf('\tMedian voltage:\t%f\n',median(data))
+% %     fprintf('\tMean voltage:\t%f\n',mean(data))
+% %     fprintf('\tMedian voltage:\t%f\n',median(data))
+%     fprintf('\n')
 
     %% DEBUG: Looping through datasets looking for stuff
 %    fprintf('\tlast 3: [%f %f %f]\n', data(end-2),data(end-1),data(end))
@@ -192,3 +207,4 @@ for i = 1:length(textFileNames)
 end
 
 fprintf('END OF REPORT\n')
+toc
