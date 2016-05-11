@@ -80,9 +80,9 @@ function [repCount,fatigueCount,fatigueReps] = processFile(fileName, baselineF, 
     previousPeakVoltage = ADC_BITS - 1;
     tempPercent = 0.0;
     fatigueCount = 0;
-    fatigueFlag = 0;
-    repFatigueDetectedOn = 0;
-    sampleFatigueDetectedOn = 0;
+%    fatigueFlag = 0;
+%    repFatigueDetectedOn = 0;
+%    sampleFatigueDetectedOn = 0;
     fatigueReps = [];
     
     %% Convert from floating-point to integer
