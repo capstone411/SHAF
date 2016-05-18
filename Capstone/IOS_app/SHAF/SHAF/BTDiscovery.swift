@@ -59,7 +59,7 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         self.centralManager?.connectPeripheral(self.peripheralBLE!, options: nil)
     }
     
-    func startReceivingData() {
+    func startStopData(action: String) {
         
         // get characteristic from current service
         let chars = self.service?.characteristics
@@ -76,8 +76,13 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         // loop through characteristics to find the right one
         for characteristic in chars! {
             if characteristic.UUID == START_CHARACTERISTIC_UUID {
-                self.peripheralBLE?.writeValue(startByte, forCharacteristic: characteristic, type: CBCharacteristicWriteType.WithResponse)
-                break
+                if action.lowercaseString != "stop" {
+                    self.peripheralBLE?.writeValue(startByte, forCharacteristic: characteristic, type: CBCharacteristicWriteType.WithResponse)
+                    break
+                }
+                else {
+                    // set stop flag to stop receiving data
+                }
             }
         }
  

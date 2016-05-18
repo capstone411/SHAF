@@ -23,6 +23,7 @@
 		73ADA7EA1CBDCB680059E6AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73ADA7E81CBDCB680059E6AC /* LaunchScreen.storyboard */; };
 		73ADA7F51CBDCB680059E6AC /* SHAFTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ADA7F41CBDCB680059E6AC /* SHAFTests.swift */; };
 		73ADA8001CBDCB680059E6AC /* SHAFUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ADA7FF1CBDCB680059E6AC /* SHAFUITests.swift */; };
+		73C3F5BD1CED1C0C005B084C /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C3F5BC1CED1C0C005B084C /* ResultsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		73ADA7FB1CBDCB680059E6AC /* SHAFUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SHAFUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		73ADA7FF1CBDCB680059E6AC /* SHAFUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHAFUITests.swift; sourceTree = "<group>"; };
 		73ADA8011CBDCB680059E6AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		73C3F5BC1CED1C0C005B084C /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 				735BC4461CC0DCA800B11406 /* ReadyViewController.swift */,
 				735BC4481CC0DF9100B11406 /* LiveViewController.swift */,
 				73AB3C2C1CC780B00023B83C /* VideoViewController.swift */,
+				73C3F5BC1CED1C0C005B084C /* ResultsViewController.swift */,
 			);
 			path = SHAF;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				73ADA7E01CBDCB680059E6AC /* FirstViewController.swift in Sources */,
 				735BC4491CC0DF9100B11406 /* LiveViewController.swift in Sources */,
 				736F8EF91CC043D0009867D2 /* SelectGoalTableViewController.swift in Sources */,
+				73C3F5BD1CED1C0C005B084C /* ResultsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

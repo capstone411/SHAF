@@ -85,11 +85,17 @@ class LiveViewController: UIViewController {
     }
     
     @IBAction func doneButtonClicked(sender: AnyObject) {
-        // send stop signal
+        dispatch_async(dispatch_get_main_queue()) {
+            // send stop signal
+            //BLEDiscovery.startStopData("stop")
         
-        // go to next view controller to display
-        // number of reps, time it took to perform
-        // the reps and when they reached fatigue
+            // change name of button to finish
+            //self.doneButton.setTitle("Done", forState: .Normal)
+        
+            // go to next view controller to display
+            // number of reps, time it took to perform
+            // the reps and when they reached fatigue
+        }
     }
     
     
