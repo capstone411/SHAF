@@ -1,0 +1,29 @@
+******************************************************************************
+
+What I have done this week:
+- Data collection
+  - 35 new data sets (4 sets X 9 subjects)
+- MATLAB
+  - Worked with Hai to functionalize the batch processing
+  - Completed initial run of analysis
+  - Created PowerPoint of results
+- Poster
+  - Worked with Thanh on design
+  - Made revisions and additions to first draft
+
+
+What I will do next week:
+- MATLAB
+  - Incorporate new data into analysis
+  - More processing as necessary as we refine and check the algorithm
+  - Further automate the batch processing for easier and more robust analyis
+
+- Poster
+  - Make necessary changes and finalize for printing
+
+
+Any issues or obstacles I had this week:
+- New data collected is in a different format and needs to be either 
+  reformatted or the MATLAB needs to be modified to deal with it
+
+******************************************************************************

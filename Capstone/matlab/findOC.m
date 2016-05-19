@@ -1,14 +1,16 @@
-function [found, count] = findOC(subject, set)
+function [found, count] = findOC(observedCount, subject, set)
 
-load('observedCount.mat')
+%load('..\data\arduino\observedCount.mat')
 found = 0;
 count = 0;
 
 for i = 1:length(observedCount)
+    
+%     s = lower(observedCount(i).name);
+%     [subjectT, remain] = strtok(s,'_');
+%     [setT,] = strtok(remain,'_');
 
-    s = lower(observedCount(i).name);
-    [subjectT, remain] = strtok(s,'_');
-    [setT,] = strtok(remain,'_');
+    [subjectT, setT] = parseSS(observedCount(i).name);
     
     if strcmp(subjectT,subject) && strcmp(setT,set)
         found = 1;
