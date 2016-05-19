@@ -11,14 +11,15 @@ import CoreBluetooth
 
 let BLEDiscovery = BTDiscovery()
 
-let SHAF_SERVICE_UUID =                    CBUUID(string: "180D")
-let REC_CALIB_ERR_CHARACTERISTIC_UUID =    CBUUID(string: "2a37")
-let REC_CALIB_DONE_CHARACTERISTIC_UUID =   CBUUID(string: "2a38")
-let REC_REP_COUNT_CHARACTERISTIC_UUID =    CBUUID(string: "2a39")
-let REC_FATIGUE_CHARACTERISTIC_UUID =      CBUUID(string: "2a3a")
-let REC_TIMEOUT_CHARACTERISTIC_UUID =      CBUUID(string: "2a3b")
+// define UUIDs
+let SHAF_SERVICE_UUID                    = CBUUID(string: "180D")
+let REC_CALIB_ERR_CHARACTERISTIC_UUID    = CBUUID(string: "2a37")
+let REC_CALIB_DONE_CHARACTERISTIC_UUID   = CBUUID(string: "2a38")
+let REC_REP_COUNT_CHARACTERISTIC_UUID    = CBUUID(string: "2a39")
+let REC_FATIGUE_CHARACTERISTIC_UUID      = CBUUID(string: "2a3a")
+let REC_TIMEOUT_CHARACTERISTIC_UUID      = CBUUID(string: "2a3b")
 let SEND_CALIB_START_CHARACTERISTIC_UUID = CBUUID(string: "2a3c")
-let SEND_START_CHARACTERISTIC_UUID =       CBUUID(string: "2a3d")
+let SEND_START_CHARACTERISTIC_UUID       = CBUUID(string: "2a3d")
 
 class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     
@@ -27,9 +28,8 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     private var discoveredDevices = [String]()    // a list of discovered devices
     private var peripherals = [CBPeripheral]()    // a list of all peripheral objects
     private var isConnected: Bool?                // flag to indicate connection
-    private var UUIDs = [String: [String]]()      // a dictionary of UUIDs
     private var service: CBService?
-    var characteristics = [String: CBCharacteristic]()
+    var characteristics = [String: CBCharacteristic]() // a dicrionary of characteristics
     
     
     var devicesDiscovered: [String] {
@@ -178,31 +178,14 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     func peripheral(peripheral: CBPeripheral, didDiscoverCharacteristicsForService service: CBService, error: NSError?) {
         
-        // 0x01 data byte to let the peripheral start sending data
-        var startValue = 7
-        let startByte = NSData(bytes: &startValue, length: sizeof(UInt8))
-        
         for characteristic in service.characteristics! {
-            // for Rep count, this will set it so that I'll get notified
-            // whenever the value of reps change
+            // get notified every time any of the receiving characteristics change value
             if characteristic.UUID == REC_REP_COUNT_CHARACTERISTIC_UUID || characteristic.UUID == REC_FATIGUE_CHARACTERISTIC_UUID || characteristic.UUID == REC_CALIB_ERR_CHARACTERISTIC_UUID || characteristic.UUID == REC_CALIB_DONE_CHARACTERISTIC_UUID || characteristic.UUID == REC_TIMEOUT_CHARACTERISTIC_UUID {
                 self.peripheralBLE?.setNotifyValue(true, forCharacteristic: characteristic)
-                //self.peripheralBLE?.writeValue(startByte, forCharacteristic: characteristic, type: CBCharacteristicWriteType.WithResponse)
-                //print(characteristic.properties)
             }
-            
-                /*
-            // do same for this fatigue flag
-            else if characteristic.UUID == FATIGUE_CHARACTERISTIC_UUID {
-                self.peripheralBLE?.setNotifyValue(true, forCharacteristic: characteristic)
-            }
-            
-            // this is for the start button
-            else if characteristic.UUID == START_CHARACTERISTIC_UUID {
-                self.peripheralBLE?.writeValue(startByte, forCharacteristic: characteristic, type: CBCharacteristicWriteType.WithResponse)
-            }
-               */
         }
+        
+        // assign characteristics into a dictionary
         self.assignCharacteristics()
     }
     
@@ -219,11 +202,6 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     
     func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
-        
-        //var reps: NSInteger?
-        
-        var startValue = 1
-        let startByte = NSData(bytes: &startValue, length: sizeof(UInt8))
         
         print("Characteristic --> ", characteristic.UUID.description, " Just updated value")
         
