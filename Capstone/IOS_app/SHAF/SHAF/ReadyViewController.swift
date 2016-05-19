@@ -24,7 +24,7 @@ class ReadyViewController: UIViewController {
     @IBAction func userIsReady(sender: AnyObject) {
         
         // let peripheral know
-        BLEDiscovery.startStopData("start")
+        BLEDiscovery.startStopData(true)
         
         // move to next controller
         performSegueWithIdentifier("LiveIdentifier", sender: nil)

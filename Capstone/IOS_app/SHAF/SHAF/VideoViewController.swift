@@ -28,7 +28,7 @@ class VideoViewController: UIViewController {
     }
     
     func loadVideo() {
-        performSegueWithIdentifier("readyIdentifier", sender: nil)
+        performSegueWithIdentifier("CalibrationIdentifier", sender: nil)
         //self.playerController.player = self.player
         //self.addChildViewController(self.playerController)
         //self.view.addSubview(self.playerController.view)

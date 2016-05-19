@@ -29,6 +29,9 @@ class LiveViewController: UIViewController {
         // watch for fatigue to change
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LiveViewController.repChanged(_:)),name:"fatigue", object: nil)
         
+        // watch for rep time outs
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LiveViewController.timeOut(_:)),name:"repTimeOut", object: nil)
+        
         // set checkbox image and hide it
         self.fatigued = false
         self.fatigueCheckBox.image = UIImage(named: "fatigueCheckBox")
@@ -87,26 +90,52 @@ class LiveViewController: UIViewController {
     @IBAction func doneButtonClicked(sender: AnyObject) {
         dispatch_async(dispatch_get_main_queue()) {
             // send stop signal
-            //BLEDiscovery.startStopData("stop")
-        
-            // change name of button to finish
-            //self.doneButton.setTitle("Done", forState: .Normal)
+            BLEDiscovery.startStopData(false)
         
             // go to next view controller to display
             // number of reps, time it took to perform
             // the reps and when they reached fatigue
+            self.performSegueWithIdentifier("ResultsIdentifier", sender: nil)
         }
     }
     
+    func timeOut(notification: NSNotificationCenter) {
+        dispatch_async(dispatch_get_main_queue()) {
+            self.showTimeOutMessage() // show time out message
+            
+        }
+    }
     
-    /*
+    func showTimeOutMessage() {
+        // create the alert
+        let alert = UIAlertController(title: "Time Out", message: "Please Continue", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        
+        // show the alert
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        let destinaion = segue.destinationViewController as! ResultsViewController
+        
+        destinaion.repCount = self.RepCount.text
+        
+        if (fatigued) {
+            destinaion.hideFatigueImage = false
+        }
+        else {
+            destinaion.hideFatigueImage = true
+        }
     }
-    */
+    
 
 }

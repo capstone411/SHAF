@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		730A955E1CED3AF6002B9014 /* CalibrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730A955D1CED3AF6002B9014 /* CalibrationViewController.swift */; };
 		731AA82E1CC49F5E00388D94 /* BluetoothTableCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731AA82D1CC49F5E00388D94 /* BluetoothTableCellTableViewCell.swift */; };
 		735BC4431CC0D90D00B11406 /* SelectMuscleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735BC4421CC0D90D00B11406 /* SelectMuscleTableViewController.swift */; };
 		735BC4451CC0DA9D00B11406 /* SelectExerciseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735BC4441CC0DA9D00B11406 /* SelectExerciseTableViewController.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		730A955D1CED3AF6002B9014 /* CalibrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalibrationViewController.swift; sourceTree = "<group>"; };
 		731AA82D1CC49F5E00388D94 /* BluetoothTableCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothTableCellTableViewCell.swift; sourceTree = "<group>"; };
 		735BC4421CC0D90D00B11406 /* SelectMuscleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectMuscleTableViewController.swift; sourceTree = "<group>"; };
 		735BC4441CC0DA9D00B11406 /* SelectExerciseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectExerciseTableViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				735BC4481CC0DF9100B11406 /* LiveViewController.swift */,
 				73AB3C2C1CC780B00023B83C /* VideoViewController.swift */,
 				73C3F5BC1CED1C0C005B084C /* ResultsViewController.swift */,
+				730A955D1CED3AF6002B9014 /* CalibrationViewController.swift */,
 			);
 			path = SHAF;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 			files = (
 				735BC4471CC0DCA800B11406 /* ReadyViewController.swift in Sources */,
 				735BC4431CC0D90D00B11406 /* SelectMuscleTableViewController.swift in Sources */,
+				730A955E1CED3AF6002B9014 /* CalibrationViewController.swift in Sources */,
 				73ADA7E21CBDCB680059E6AC /* SecondViewController.swift in Sources */,
 				731AA82E1CC49F5E00388D94 /* BluetoothTableCellTableViewCell.swift in Sources */,
 				73ADA7DE1CBDCB680059E6AC /* AppDelegate.swift in Sources */,

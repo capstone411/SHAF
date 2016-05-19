@@ -15,20 +15,33 @@ class ResultsViewController: UIViewController {
     @IBOutlet weak var fatigueLabel: UILabel!
     @IBOutlet weak var fatigueImage: UIImageView!
     @IBOutlet weak var doneButton: UIButton!
+    var repCount: String?
+    var hideFatigueImage = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // set up fonts and center it for the number of reps label
-        self.numOfCorrectRepsLabel.text = ""
         self.numOfCorrectRepsLabel.textAlignment = NSTextAlignment.Center
         self.numOfCorrectRepsLabel.font = UIFont(name: self.numOfCorrectRepsLabel.font.fontName, size: 30)
+        self.numOfCorrectRepsLabel.text = repCount
         
         // set up fonts and center it for the number of reps text label
         self.correctRepsLabel.textAlignment = NSTextAlignment.Center
-        self.correctRepsLabel.font = UIFont(name: self.correctRepsLabel.font.fontName, size: 30)
-
-        // Do any additional setup after loading the view.
+        self.correctRepsLabel.font = UIFont(name: self.correctRepsLabel.font.fontName, size: 20)
+        
+        // hide check box of fatigue and get image for it
+        self.fatigueImage.image = UIImage(named: "fatigueCheckBox")
+        if (hideFatigueImage) {
+            self.fatigueImage.hidden = true
+            self.fatigueLabel.text = "Your Muscle did NOT Reach Fatigue"
+            self.fatigueLabel.font = UIFont(name: self.fatigueLabel.font.fontName, size: 14)
+        }
+        else {
+            self.fatigueImage.hidden = false
+            self.fatigueLabel.text = "Your Muscle Reached Fatigue"
+            self.fatigueLabel.font = UIFont(name: self.fatigueLabel.font.fontName, size: 20)
+        }
     }
 
     override func didReceiveMemoryWarning() {

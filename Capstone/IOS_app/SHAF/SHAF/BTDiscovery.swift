@@ -11,11 +11,14 @@ import CoreBluetooth
 
 let BLEDiscovery = BTDiscovery()
 
-let SHAF_SERVICE_UUID = CBUUID(string: "180D")
-let REP_COUNT_CHARACTERISTIC_UUID = CBUUID(string: "2a37")
-let FATIGUE_CHARACTERISTIC_UUID = CBUUID(string: "F000AA00-0451-4000-B000-000000000000")
-let START_CHARACTERISTIC_UUID = CBUUID(string: "2a38")
-
+let SHAF_SERVICE_UUID =                    CBUUID(string: "180D")
+let REC_CALIB_ERR_CHARACTERISTIC_UUID =    CBUUID(string: "2a37")
+let REC_CALIB_DONE_CHARACTERISTIC_UUID =   CBUUID(string: "2a38")
+let REC_REP_COUNT_CHARACTERISTIC_UUID =    CBUUID(string: "2a39")
+let REC_FATIGUE_CHARACTERISTIC_UUID =      CBUUID(string: "2a3a")
+let REC_TIMEOUT_CHARACTERISTIC_UUID =      CBUUID(string: "2a3b")
+let SEND_CALIB_START_CHARACTERISTIC_UUID = CBUUID(string: "2a3c")
+let SEND_START_CHARACTERISTIC_UUID =       CBUUID(string: "2a3d")
 
 class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     
@@ -26,6 +29,7 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     private var isConnected: Bool?                // flag to indicate connection
     private var UUIDs = [String: [String]]()      // a dictionary of UUIDs
     private var service: CBService?
+    var characteristics = [String: CBCharacteristic]()
     
     
     var devicesDiscovered: [String] {
@@ -44,6 +48,47 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         centralManager = CBCentralManager(delegate: self, queue: centralQueue)
         }
     
+    // this function assigns characteristics into a dictionary so 
+    // they can be referred to later easily without looping into the
+    // array every time
+    func assignCharacteristics() {
+        dispatch_async(dispatch_get_main_queue()) {
+        // get characteristic from current service
+        let chars = self.service?.characteristics
+        
+        // make sure its not empty
+        if chars == nil {
+            return
+        }
+        
+        // loop through characteristics to find the right one
+        for characteristic in chars! {
+            if characteristic.UUID == SEND_CALIB_START_CHARACTERISTIC_UUID {
+                self.characteristics["SEND_CALIB_START_CHARACTERISTIC"] = characteristic
+            }
+            else if characteristic.UUID == SEND_START_CHARACTERISTIC_UUID {
+                self.characteristics["SEND_START_CHARACTERISTIC"] = characteristic
+            }
+            else if characteristic.UUID == REC_REP_COUNT_CHARACTERISTIC_UUID {
+                self.characteristics["REC_REP_COUNT_CHARACTERISTIC"] = characteristic
+            }
+            else if characteristic.UUID == REC_FATIGUE_CHARACTERISTIC_UUID {
+                self.characteristics["REC_FATIGUE_CHARACTERISTIC"] = characteristic
+            }
+            else if characteristic.UUID == REC_TIMEOUT_CHARACTERISTIC_UUID {
+                self.characteristics["REC_TIMEOUT_CHARACTERISTIC"] = characteristic
+            }
+            else if characteristic.UUID == REC_CALIB_ERR_CHARACTERISTIC_UUID {
+                self.characteristics["REC_CALIB_ERR_CHARACTERISTIC"] = characteristic
+            }
+            else if characteristic.UUID == REC_CALIB_DONE_CHARACTERISTIC_UUID {
+                self.characteristics["REC_CALIB_DONE_CHARACTERISTIC"] = characteristic
+            }
+        }
+        }
+
+    }
+    
     
     func stopScan() {
         self.centralManager?.stopScan()
@@ -59,35 +104,30 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         self.centralManager?.connectPeripheral(self.peripheralBLE!, options: nil)
     }
     
-    func startStopData(action: String) {
+    func startStopData(start: Bool) {
+        var startValue = 1
+        var startByte = NSData(bytes: &startValue, length: sizeof(UInt8))
         
-        // get characteristic from current service
-        let chars = self.service?.characteristics
-        
-        // make sure its not empty
-        if chars == nil {
-            return
+        if start {
+            self.peripheralBLE?.writeValue(startByte, forCharacteristic: self.characteristics["SEND_START_CHARACTERISTIC"]!, type: CBCharacteristicWriteType.WithResponse)
         }
-        
-        // 0x01 data byte to let the peripheral start sending data
+        else {
+            startValue = 0;
+            startByte = NSData(bytes: &startValue, length: sizeof(UInt8))
+            self.peripheralBLE?.writeValue(startByte, forCharacteristic: self.characteristics["SEND_START_CHARACTERISTIC"]!, type: CBCharacteristicWriteType.WithResponse)
+        }
+    }
+    
+    
+    // function used to set or clear calibrate flag
+    func calibrate(set: Bool) {
         var startValue = 1
         let startByte = NSData(bytes: &startValue, length: sizeof(UInt8))
-        
-        // loop through characteristics to find the right one
-        for characteristic in chars! {
-            if characteristic.UUID == START_CHARACTERISTIC_UUID {
-                if action.lowercaseString != "stop" {
-                    self.peripheralBLE?.writeValue(startByte, forCharacteristic: characteristic, type: CBCharacteristicWriteType.WithResponse)
-                    break
-                }
-                else {
-                    // set stop flag to stop receiving data
-                }
-            }
+        if set {
+            self.peripheralBLE?.writeValue(startByte, forCharacteristic: self.characteristics["SEND_CALIB_START_CHARACTERISTIC"]!, type: CBCharacteristicWriteType.WithResponse)
         }
- 
     }
-
+ 
     
     func centralManagerDidUpdateState(central: CBCentralManager) {
         
@@ -145,11 +185,9 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         for characteristic in service.characteristics! {
             // for Rep count, this will set it so that I'll get notified
             // whenever the value of reps change
-            if characteristic.UUID == REP_COUNT_CHARACTERISTIC_UUID {
+            if characteristic.UUID == REC_REP_COUNT_CHARACTERISTIC_UUID || characteristic.UUID == REC_FATIGUE_CHARACTERISTIC_UUID || characteristic.UUID == REC_CALIB_ERR_CHARACTERISTIC_UUID || characteristic.UUID == REC_CALIB_DONE_CHARACTERISTIC_UUID || characteristic.UUID == REC_TIMEOUT_CHARACTERISTIC_UUID {
                 self.peripheralBLE?.setNotifyValue(true, forCharacteristic: characteristic)
                 //self.peripheralBLE?.writeValue(startByte, forCharacteristic: characteristic, type: CBCharacteristicWriteType.WithResponse)
-                
-                
                 //print(characteristic.properties)
             }
             
@@ -165,6 +203,7 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
             }
                */
         }
+        self.assignCharacteristics()
     }
     
     
@@ -188,26 +227,36 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         
         print("Characteristic --> ", characteristic.UUID.description, " Just updated value")
         
-        if characteristic.UUID == REP_COUNT_CHARACTERISTIC_UUID {
+        if characteristic.UUID == REC_REP_COUNT_CHARACTERISTIC_UUID {
             
             let data = characteristic.value
             let dataLength = data?.length
             var repsArray = [UInt8](count: dataLength!, repeatedValue: 0)
-            //characteristic.value?.getBytes(&reps, length: dataLength!)
-            //print(reps)
+
             data!.getBytes(&repsArray, length: dataLength! * sizeof(UInt8))
-            //print("Rep Count: ",  characteristic.value)
+
             print("Rep Count: ",  repsArray)
             let repValue = Double(repsArray[1])
             let repString = NSString(format: "%.0f", repValue)
-            //print(repString)
-            //NSNotificationCenter.defaultCenter().postNotificationName("repCountChanged", object: nil, userInfo: ["repCount": characteristic.value!])
+
             NSNotificationCenter.defaultCenter().postNotificationName("repCountChanged", object: nil, userInfo: ["repCount": repString])
-            
         }
-        else if characteristic.UUID == FATIGUE_CHARACTERISTIC_UUID {
+        else if characteristic.UUID == REC_FATIGUE_CHARACTERISTIC_UUID {
+            print("Fatigue Reached")
             NSNotificationCenter.defaultCenter().postNotificationName("fatigue", object: nil)
             print("Fatigue value: ", characteristic.value)
+        }
+        else if characteristic.UUID == REC_CALIB_DONE_CHARACTERISTIC_UUID {
+            print("Calibration COmplete")
+            NSNotificationCenter.defaultCenter().postNotificationName("calibComplete", object: nil)
+        }
+        else if characteristic.UUID == REC_CALIB_ERR_CHARACTERISTIC_UUID {
+            print("Calibration Failed")
+            NSNotificationCenter.defaultCenter().postNotificationName("calibFailed", object: nil)
+        }
+        else if characteristic.UUID == REC_TIMEOUT_CHARACTERISTIC_UUID {
+            print("Time out")
+            NSNotificationCenter.defaultCenter().postNotificationName("repTimeOut", object: nil)
         }
     }
 }
