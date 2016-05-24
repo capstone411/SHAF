@@ -27,7 +27,7 @@ class LiveViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LiveViewController.repChanged(_:)),name:"repCountChanged", object: nil)
         
         // watch for fatigue to change
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LiveViewController.repChanged(_:)),name:"fatigue", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LiveViewController.fatigue(_:)),name:"fatigue", object: nil)
         
         // watch for rep time outs
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LiveViewController.timeOut(_:)),name:"repTimeOut", object: nil)
@@ -59,19 +59,15 @@ class LiveViewController: UIViewController {
         // update value of rep count label
         dispatch_async(dispatch_get_main_queue()) {
             print("inside repChanged function")
-            //self.RepCount.text = notification.userInfo?["repCount"] as? String
-        
+            if ((notification.userInfo?["repCount"]) != nil) {
             print(notification.userInfo?["repCount"] as! String)
             self.RepCount.text = notification.userInfo?["repCount"] as? String
-       
-            if (notification.userInfo?["repCount"] as! String == "10") {
-                self.fatigue()
             }
         }
         //self.RepCount.text = notification.userInfo?["repCount"] as! String
     }
     
-    func fatigue () {
+    func fatigue (notification: NSNotification) {
         dispatch_async(dispatch_get_main_queue()) {
             // check if fatigue
             if self.fatigued {
@@ -102,13 +98,12 @@ class LiveViewController: UIViewController {
     func timeOut(notification: NSNotificationCenter) {
         dispatch_async(dispatch_get_main_queue()) {
             self.showTimeOutMessage() // show time out message
-            
         }
     }
     
     func showTimeOutMessage() {
         // create the alert
-        let alert = UIAlertController(title: "Time Out", message: "Please Continue", preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: "Time Out", message: "Please Continue or Press Done", preferredStyle: UIAlertControllerStyle.Alert)
         
         // add an action (button)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
@@ -116,7 +111,6 @@ class LiveViewController: UIViewController {
         // show the alert
         self.presentViewController(alert, animated: true, completion: nil)
     }
-    
     
     
     // MARK: - Navigation

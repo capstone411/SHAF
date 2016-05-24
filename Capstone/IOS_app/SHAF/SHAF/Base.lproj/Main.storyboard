@@ -278,7 +278,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pWS-uo-wOn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3355.5" y="-344.5"/>
+            <point key="canvasLocation" x="3349.5" y="-344.5"/>
         </scene>
         <!--Video View Controller-->
         <scene sceneID="ggF-hg-I9W">

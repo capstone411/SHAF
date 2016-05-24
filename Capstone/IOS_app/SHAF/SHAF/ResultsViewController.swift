@@ -40,7 +40,7 @@ class ResultsViewController: UIViewController {
         else {
             self.fatigueImage.hidden = false
             self.fatigueLabel.text = "Your Muscle Reached Fatigue"
-            self.fatigueLabel.font = UIFont(name: self.fatigueLabel.font.fontName, size: 20)
+            self.fatigueLabel.font = UIFont(name: self.fatigueLabel.font.fontName, size: 14)
         }
     }
 

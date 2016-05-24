@@ -33,35 +33,40 @@ class CalibrationViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
     @IBAction func CalibButtonPressed(sender: AnyObject) {
         
         // if they're about to start calibrating
-        //if (!calibInProcess && !calibDone) {
         if self.startCalibButton.titleLabel?.text?.lowercaseString == "start calibration" {
             self.startCalibButton.setTitle("Calibrating..", forState: .Normal)
+            self.startCalibButton.enabled = false
             BLEDiscovery.calibrate(true)
         }
-            /*
-        else if self.startCalibButton.titleLabel?.text?.lowercaseString == "calibrating.." {
-            self.startCalibButton.setTitle("Start Calibration", forState: .Normal)
-        }
- */
     }
     
     // executes when calibration is complete
     func calibComplete(notification: NSNotification) {
         dispatch_async(dispatch_get_main_queue()) {
+            BLEDiscovery.calibrate(false) // clear calibration flag
             self.performSegueWithIdentifier("ReadyIdentifier", sender: nil)
         }
+        
     }
     
+    // executes when calibration fails
     func calibFailed(notification: NSNotification) {
         dispatch_async(dispatch_get_main_queue()) {
             self.startCalibButton.setTitle("Start Calibration", forState: .Normal)
-            self.showCalibFailedAlert()
+            BLEDiscovery.calibrate(false) // clear calibration flag
+            self.startCalibButton.enabled = true // enable start calibartion button
+            self.showCalibFailedAlert() // show an error message
         }
     }
     
+    // shows a calibration fail message
     func showCalibFailedAlert() {
         // create the alert
         let alert = UIAlertController(title: "Calibration Failed", message: "Please try again", preferredStyle: UIAlertControllerStyle.Alert)

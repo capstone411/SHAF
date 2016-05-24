@@ -108,24 +108,29 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         var startValue = 1
         var startByte = NSData(bytes: &startValue, length: sizeof(UInt8))
         
-        if start {
-            self.peripheralBLE?.writeValue(startByte, forCharacteristic: self.characteristics["SEND_START_CHARACTERISTIC"]!, type: CBCharacteristicWriteType.WithResponse)
-        }
-        else {
-            startValue = 0;
+        if !start {
+            startValue = 0
             startByte = NSData(bytes: &startValue, length: sizeof(UInt8))
-            self.peripheralBLE?.writeValue(startByte, forCharacteristic: self.characteristics["SEND_START_CHARACTERISTIC"]!, type: CBCharacteristicWriteType.WithResponse)
         }
+        
+        print("Start flag: ", startValue)
+
+        self.peripheralBLE?.writeValue(startByte, forCharacteristic: self.characteristics["SEND_START_CHARACTERISTIC"]!, type: CBCharacteristicWriteType.WithResponse)
     }
     
     
     // function used to set or clear calibrate flag
     func calibrate(set: Bool) {
         var startValue = 1
-        let startByte = NSData(bytes: &startValue, length: sizeof(UInt8))
-        if set {
-            self.peripheralBLE?.writeValue(startByte, forCharacteristic: self.characteristics["SEND_CALIB_START_CHARACTERISTIC"]!, type: CBCharacteristicWriteType.WithResponse)
+        var startByte = NSData(bytes: &startValue, length: sizeof(UInt8))
+        
+        if !set {
+            startValue = 0
+            startByte = NSData(bytes: &startValue, length: sizeof(UInt8))
         }
+        print("calib start value:", startValue)
+
+        self.peripheralBLE?.writeValue(startByte, forCharacteristic: self.characteristics["SEND_CALIB_START_CHARACTERISTIC"]!, type: CBCharacteristicWriteType.WithResponse)
     }
  
     
@@ -159,6 +164,10 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     func centralManager(central: CBCentralManager, didFailToConnectPeripheral peripheral: CBPeripheral, error: NSError?) {
         self.isConnected = false
         print("Failed to connect to peripheral -> ", error?.description)
+    }
+    
+    func centralManager(central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?) {
+        
     }
     
     
@@ -196,7 +205,7 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
             print("Error writing a value --> ", error?.description.debugDescription)
         }
         else {
-            print("Successfully wrote value")
+            print("Successfully wrote value to", characteristic.UUID)
         }
     }
     
@@ -222,10 +231,16 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         else if characteristic.UUID == REC_FATIGUE_CHARACTERISTIC_UUID {
             print("Fatigue Reached")
             NSNotificationCenter.defaultCenter().postNotificationName("fatigue", object: nil)
-            print("Fatigue value: ", characteristic.value)
         }
         else if characteristic.UUID == REC_CALIB_DONE_CHARACTERISTIC_UUID {
+            let data = characteristic.value
+            let dataLength = data?.length
+            var repsArray = [UInt8](count: dataLength!, repeatedValue: 0)
+            
+            data!.getBytes(&repsArray, length: dataLength! * sizeof(UInt8))
+
             print("Calibration COmplete")
+            print("Value:", repsArray)
             NSNotificationCenter.defaultCenter().postNotificationName("calibComplete", object: nil)
         }
         else if characteristic.UUID == REC_CALIB_ERR_CHARACTERISTIC_UUID {
