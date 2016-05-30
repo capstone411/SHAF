@@ -1,4 +1,4 @@
-function repArray = tuneRep(filename, baselineArray, thresholdArray)
+function repArray = tuneRep(filename, baselineArray, thresholdArray, fatigueF)
 
 f = char(filename);
 
@@ -9,7 +9,7 @@ repArray = zeros(n,m);
 
 for i = 1:n
     for j = 1:m
-        repArray(i,j) = processFile(f,baselineArray(i),thresholdArray(j));        
+        repArray(i,j) = processFile(f,baselineArray(i),thresholdArray(j),fatigueF);        
     end
 end
 

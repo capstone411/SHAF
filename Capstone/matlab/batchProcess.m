@@ -7,9 +7,9 @@ tic
 % processed.  This may change depending on which computer is running the
 % code.  If this file is in the capstone\matlab directory, the correct
 % relative path is capstone\data\arduino
-cd C:\Users\Todd\Documents\GitHub\SHAF\Capstone\data\arduino
+cd N:\SHAF\Capstone\data\arduino
 
-% Directory to store results
+% Directory to store results (FATIGUE and BT mode only)
 d = '..\results\';
 
 % Add capstone matlab folder to path so new functions are recognized
@@ -20,10 +20,10 @@ FAST_MODE = 1;
 FATIGUE_MODE = 0;
 BT_MODE = 0;
 
-% "Tuned" variables determined through other analysis
-B_TUNED = 0.40;
-T_TUNED = 0.50;
-F_TUNED = 0.28;
+% Tuned variables determined through other analysis
+B_TUNED = 0.35;
+T_TUNED = 0.60;
+F_TUNED = 0.17;
 
 % Load needed variables
 load('observedCount.mat')   % array of structs w/ filename and oberved rep count
@@ -40,8 +40,7 @@ n = length(textFileList);
 
 % Create 3D array to hold fatigue results
 fatigueSum = zeros(length(fatigue),4,n);
-for i = 1:n
-     
+for i = 1:n     
     % Get next file name in list
     fileName = textFileList(i).name;
     % Parse subject and set from file name    
@@ -72,6 +71,9 @@ for i = 1:n
         repArray = tuneRep(fileName, baseline, threshold, F_TUNED);
         % Write rep count array to result csv file
         csvwrite(repFilename, repArray);
+        % Print status update
+        fprintf([sub '_' set '_' 'repCounts.csv'])
+        fprintf(' PRINTED! (%d of %d)\n',i,n)
     end
     
 end

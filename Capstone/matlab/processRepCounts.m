@@ -39,10 +39,11 @@ for i = 1:p
     if found
         fprintf('%s\t\t%d\n',[subject set], count)        
         S(:,:,i) = csvread(repCountsList(i).name);
-        S(:,:,i) = count - S(:,:,i); 
+        S(:,:,i) = abs(count - S(:,:,i)); 
     end
     
 end
 
 result = sum(S,3);
-csvwrite('repDiffReport.csv', result); 
+csvwrite('repDiffReport3.csv', result);
+
