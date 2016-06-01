@@ -1,0 +1,11 @@
+What I have done this week:
+
+- Combine bluetooth code and sensor code
+- Debug and get ready for simple demo
+- Discuss about Poster
+- Finish the Matlab code to find the baseline and threshold
+
+What I will do next week:
+- Keep testings and fix bug for demo
+
+Issues

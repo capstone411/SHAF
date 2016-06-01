@@ -1,0 +1,14 @@
+What I have done this week:
+- Create a sever, some characteristics
+- Write some simple code to send and to receive data by bluetooth
+
+
+What I will do next week:
+
+- Read documentation of library bluetooth
+- Discuss communication characteristic between iPhone and bluetooth
+
+
+Issues:
+
+- I have trouble to receive data from iPhone.
