@@ -42,7 +42,7 @@ class WeightAmountViewController: UIViewController, UITextFieldDelegate {
         // Find out what the text field will be after adding the current edit
         let text = (weightNumField.text! as NSString).stringByReplacingCharactersInRange(range, withString: string)
         let weightAmount = Int(text)
-        if (weightAmount != nil) {
+        if (weightAmount != nil && weightAmount < 120) {
             // Text field converted to an Int
             BLEDiscovery.weightAmount = weightAmount!
             self.nextButton.enabled = true
