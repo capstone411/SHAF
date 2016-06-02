@@ -1,0 +1,9 @@
+What I've done this week:
+- Reviewing the poster
+- Working on ppt for final presentation
+- Implementing isometric exercise in Arduino
+- Fixing bugs caused by timeout flag
+
+What I will do next week:
+- Practicing the presentation with team
+- Creating a retrospective project schedule
