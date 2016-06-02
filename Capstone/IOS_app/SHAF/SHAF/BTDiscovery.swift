@@ -110,25 +110,27 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     func startStopData(start: Bool) {
         var startValue = 1
-        var startByte = NSData(bytes: &startValue, length: sizeof(UInt8))
         
         if !start {
             startValue = 0
-            startByte = NSData(bytes: &startValue, length: sizeof(UInt8))
         }
-        
+        let startByte = NSData(bytes: &startValue, length: sizeof(UInt8))
+
         print("Start flag: ", startValue)
 
         self.peripheralBLE?.writeValue(startByte, forCharacteristic: self.characteristics["SEND_START_CHARACTERISTIC"]!, type: CBCharacteristicWriteType.WithResponse)
     }
     
     // asserts the stop flag when called
-    func assertStop() {
+    func assertStop(deassert: Bool) {
         var stopValue = 1
+        
+        if deassert {
+            stopValue = 0
+        }
         let stopByte = NSData(bytes: &stopValue, length: sizeof(UInt8))
         
-        
-        // update value
+        // update characteristic
         self.peripheralBLE?.writeValue(stopByte, forCharacteristic: self.characteristics["SEND_STOP_CHARACTERISTIC"]!, type: CBCharacteristicWriteType.WithResponse)
     }
     
@@ -181,7 +183,13 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     func centralManager(central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?) {
-        
+        // display and error
+        // then go back to first view controller
+        print("Peripheral disconnected, error -->", error)
+        let navigationController = UIApplication.sharedApplication().keyWindow?.rootViewController as? UINavigationController
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let destinationViewController = storyBoard.instantiateViewControllerWithIdentifier("FirstViewController")
+        navigationController?.viewControllers[0].presentViewController(destinationViewController, animated: true, completion: nil)
     }
     
     
@@ -265,5 +273,9 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
             print("Time out")
             NSNotificationCenter.defaultCenter().postNotificationName("repTimeOut", object: nil)
         }
+    }
+    
+    func showDisconnectAlert() {
+        
     }
 }
