@@ -56,7 +56,7 @@ class WeightAmountViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func nextButtonClicked(sender: AnyObject) {
-        performSegueWithIdentifier("videoIdentifier", sender: nil)
+        performSegueWithIdentifier("CalibrationIdentifier", sender: nil)
     }
     
 

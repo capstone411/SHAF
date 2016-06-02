@@ -294,13 +294,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <connections>
-                        <segue destination="Ibr-Gg-Ni5" kind="show" identifier="CalibrationIdentifier" id="qYx-c8-mEc"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L9R-tM-6WK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2393.5" y="-344.5"/>
+            <point key="canvasLocation" x="2391.5" y="445.5"/>
         </scene>
         <!--Weight Amount View Controller-->
         <scene sceneID="TRm-99-6Ub">
@@ -347,12 +344,12 @@
                         <outlet property="lbsLabel" destination="zoL-Nf-cMb" id="zqb-xg-DeR"/>
                         <outlet property="nextButton" destination="Lw9-fu-1Zd" id="ovv-Ex-5Vt"/>
                         <outlet property="weightNumField" destination="dex-xX-tvW" id="rLV-tl-1y9"/>
-                        <segue destination="BGu-qK-yoC" kind="show" identifier="videoIdentifier" id="vzU-DV-p3i"/>
+                        <segue destination="Ibr-Gg-Ni5" kind="show" identifier="CalibrationIdentifier" id="VDT-j2-wMC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LY9-V0-PjR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1909.5" y="445.5"/>
+            <point key="canvasLocation" x="2381.5" y="-344.5"/>
         </scene>
         <!--Live View Controller-->
         <scene sceneID="1eh-qM-3tY">
