@@ -1,0 +1,15 @@
+What I have done this week:
+
+- Complete the function send and receive for bluetooth module
+- Finish initial all characteristic in flow chart
+
+
+What I will do next week:
+
+- Discuss with Todd about matrix to determine threshold and baseline
+
+
+Issues:
+
+- The communication between bluetooth and iPhone is one way. 
+
