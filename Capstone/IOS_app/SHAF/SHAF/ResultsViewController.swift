@@ -15,6 +15,7 @@ class ResultsViewController: UIViewController {
     @IBOutlet weak var fatigueLabel: UILabel!
     @IBOutlet weak var fatigueImage: UIImageView!
     @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var oneRepMaxLabel: UILabel!
     var repCount: String?
     var hideFatigueImage = false
 
@@ -42,6 +43,17 @@ class ResultsViewController: UIViewController {
             self.fatigueLabel.text = "Your Muscle Reached Fatigue"
             self.fatigueLabel.font = UIFont(name: self.fatigueLabel.font.fontName, size: 14)
         }
+        // calculate one rep max
+        let maxRep = Int(self.calculateOneRepMax())
+        print("Calculated:", maxRep)
+        self.oneRepMaxLabel.text = "You can do " + String(maxRep) + " LBS for one rep"
+    }
+    
+    // calculates one rep max
+    func calculateOneRepMax() -> Double{
+        print("MAX:", BLEDiscovery.weightAmount)
+        let maxRep = Double(BLEDiscovery.weightAmount)*(1.00 + Double(Int(self.repCount!)!)/30)
+        return maxRep
     }
 
     override func didReceiveMemoryWarning() {

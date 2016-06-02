@@ -66,6 +66,7 @@ class LiveViewController: UIViewController {
         }
     }
     
+    
     func fatigue (notification: NSNotification) {
         dispatch_async(dispatch_get_main_queue()) {
             // check if fatigue

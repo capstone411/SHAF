@@ -25,6 +25,7 @@
 		73ADA7F51CBDCB680059E6AC /* SHAFTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ADA7F41CBDCB680059E6AC /* SHAFTests.swift */; };
 		73ADA8001CBDCB680059E6AC /* SHAFUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ADA7FF1CBDCB680059E6AC /* SHAFUITests.swift */; };
 		73C3F5BD1CED1C0C005B084C /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C3F5BC1CED1C0C005B084C /* ResultsViewController.swift */; };
+		73DC6CF11CFFDD550096E5B8 /* WeightAmountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DC6CF01CFFDD550096E5B8 /* WeightAmountViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		73ADA7FF1CBDCB680059E6AC /* SHAFUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHAFUITests.swift; sourceTree = "<group>"; };
 		73ADA8011CBDCB680059E6AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		73C3F5BC1CED1C0C005B084C /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
+		73DC6CF01CFFDD550096E5B8 /* WeightAmountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightAmountViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 				73AB3C2C1CC780B00023B83C /* VideoViewController.swift */,
 				73C3F5BC1CED1C0C005B084C /* ResultsViewController.swift */,
 				730A955D1CED3AF6002B9014 /* CalibrationViewController.swift */,
+				73DC6CF01CFFDD550096E5B8 /* WeightAmountViewController.swift */,
 			);
 			path = SHAF;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 			files = (
 				735BC4471CC0DCA800B11406 /* ReadyViewController.swift in Sources */,
 				735BC4431CC0D90D00B11406 /* SelectMuscleTableViewController.swift in Sources */,
+				73DC6CF11CFFDD550096E5B8 /* WeightAmountViewController.swift in Sources */,
 				730A955E1CED3AF6002B9014 /* CalibrationViewController.swift in Sources */,
 				73ADA7E21CBDCB680059E6AC /* SecondViewController.swift in Sources */,
 				731AA82E1CC49F5E00388D94 /* BluetoothTableCellTableViewCell.swift in Sources */,

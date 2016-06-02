@@ -162,7 +162,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SelectGoalCellIdentifier" id="qno-7z-xbF">
-                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qno-7z-xbF" id="cOl-so-rYC">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -194,7 +194,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SelectMuscleICelldentifier" id="59t-Ig-WpN">
-                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="59t-Ig-WpN" id="LGK-3t-g3L">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -226,7 +226,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SelectExerciseCellIdentifier" id="E3n-vk-nt8">
-                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E3n-vk-nt8" id="KME-zF-ftc">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -241,7 +241,7 @@
                     </tableView>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <segue destination="BGu-qK-yoC" kind="show" identifier="videoIdentifier" id="OBr-yS-xXc"/>
+                        <segue destination="CrH-2r-geR" kind="show" identifier="WeightIdentifier" id="9El-V8-VVe"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dAq-ai-2jN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -301,6 +301,58 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L9R-tM-6WK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2393.5" y="-344.5"/>
+        </scene>
+        <!--Weight Amount View Controller-->
+        <scene sceneID="TRm-99-6Ub">
+            <objects>
+                <viewController id="CrH-2r-geR" customClass="WeightAmountViewController" customModule="SHAF" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7aS-0X-cAM"/>
+                        <viewControllerLayoutGuide type="bottom" id="Lr4-Qq-exC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qUv-5e-Fyc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dex-xX-tvW">
+                                <rect key="frame" x="30" y="241" width="137" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lw9-fu-1Zd">
+                                <rect key="frame" x="228" y="293" width="117" height="48"/>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="nextButtonClicked:" destination="CrH-2r-geR" eventType="touchUpInside" id="vl2-y0-y63"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="lbs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zoL-Nf-cMb">
+                                <rect key="frame" x="175" y="241" width="42" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="How much weight are you lifting?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t9e-51-qhl">
+                                <rect key="frame" x="0.0" y="173" width="375" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="howMuchWeightLabel" destination="t9e-51-qhl" id="Tvg-7D-kci"/>
+                        <outlet property="lbsLabel" destination="zoL-Nf-cMb" id="zqb-xg-DeR"/>
+                        <outlet property="nextButton" destination="Lw9-fu-1Zd" id="ovv-Ex-5Vt"/>
+                        <outlet property="weightNumField" destination="dex-xX-tvW" id="rLV-tl-1y9"/>
+                        <segue destination="BGu-qK-yoC" kind="show" identifier="videoIdentifier" id="vzU-DV-p3i"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LY9-V0-PjR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1909.5" y="445.5"/>
         </scene>
         <!--Live View Controller-->
         <scene sceneID="1eh-qM-3tY">
@@ -378,21 +430,27 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G5E-EZ-lCc">
-                                <rect key="frame" x="0.0" y="331" width="64" height="50"/>
+                                <rect key="frame" x="0.0" y="281" width="64" height="50"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your Muscle Reached Fatigue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uw5-cu-65k">
+                                <rect key="frame" x="68" y="289" width="239" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your one rep max is" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hq0-eC-m7G">
+                                <rect key="frame" x="68" y="376" width="297" height="37"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cRo-KU-vUl">
-                                <rect key="frame" x="97" y="450" width="165" height="30"/>
+                                <rect key="frame" x="97" y="492" width="165" height="30"/>
                                 <state key="normal" title="Done"/>
                                 <connections>
                                     <segue destination="HxP-bB-bJp" kind="show" id="Mvu-0z-og4"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your Muscle Reached Fatigue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uw5-cu-65k">
-                                <rect key="frame" x="68" y="339" width="239" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -403,6 +461,7 @@
                         <outlet property="fatigueImage" destination="G5E-EZ-lCc" id="asC-JS-iPK"/>
                         <outlet property="fatigueLabel" destination="Uw5-cu-65k" id="PR9-nR-19c"/>
                         <outlet property="numOfCorrectRepsLabel" destination="acT-au-Vl4" id="6Bz-Qk-g7b"/>
+                        <outlet property="oneRepMaxLabel" destination="Hq0-eC-m7G" id="k7Y-E2-fjg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SgU-OB-nJD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -447,6 +506,6 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tI3-mM-zw9"/>
+        <segue reference="Mvu-0z-og4"/>
     </inferredMetricsTieBreakers>
 </document>

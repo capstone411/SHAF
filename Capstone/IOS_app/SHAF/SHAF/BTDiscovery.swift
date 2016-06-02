@@ -31,6 +31,7 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     private var isConnected: Bool?                // flag to indicate connection
     private var service: CBService?
     var characteristics = [String: CBCharacteristic]() // a dicrionary of characteristics
+    var weightAmount = 0
     
     
     var devicesDiscovered: [String] {
@@ -186,10 +187,12 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         // display and error
         // then go back to first view controller
         print("Peripheral disconnected, error -->", error)
+        /*
         let navigationController = UIApplication.sharedApplication().keyWindow?.rootViewController as? UINavigationController
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let destinationViewController = storyBoard.instantiateViewControllerWithIdentifier("FirstViewController")
         navigationController?.viewControllers[0].presentViewController(destinationViewController, animated: true, completion: nil)
+        */
     }
     
     
