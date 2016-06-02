@@ -7,7 +7,7 @@ tic
 % processed.  This may change depending on which computer is running the
 % code.  If this file is in the capstone\matlab directory, the correct
 % relative path is capstone\data\arduino
-cd N:\SHAF\Capstone\data\arduino
+cd C:\Users\Todd\Documents\GitHub\SHAF\Capstone\data\arduino
 
 % Directory to store results (FATIGUE and BT mode only)
 d = '..\results\';
