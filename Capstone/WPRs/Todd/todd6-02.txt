@@ -1,0 +1,22 @@
+******************************************************************************
+
+What I have done these two weeks:
+- Demo
+  - Assisted the team in debugging the demo
+- Poster
+  - Revised and submitted poster
+- MATLAB
+  - Fixed my "absolute value" bug
+  - Commented the code better
+  - Prepared new presentation of data
+- Final PowerPoint Presentation
+  - Prepared slides for MATLAB, electrode sleeve, muscle sensor, and summary
+  - Compiled and reviewed group slides
+ 
+What I will do next week:
+- Meditate and reflect on capstone and what I've learned :-)
+
+Any issues or obstacles I had this week:
+- None
+
+******************************************************************************

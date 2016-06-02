@@ -1,4 +1,6 @@
 function [found, count] = findOC(observedCount, subject, set)
+% This function retrieves the observed rep count for a given subject and
+% set
 
 %load('..\data\arduino\observedCount.mat')
 found = 0;

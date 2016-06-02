@@ -1,3 +1,14 @@
+% This is the main batch processing script.  It has three different modes
+% of operation: (1) FAST_MODE processes each dataset once with the tuned
+% variables and prints results to console, (2) FATIGUE_MODE processes each
+% data set N times, where N is the length of the "fatigue" array that
+% contains different fatigue thresholds to test, and writes result matrices 
+% to files in the /data/results/ folder, and (3) BT_MODE processes each
+% data set N*M times, where N is size of "baseline" array and M is size of
+% "threshold" array, each containing different values to test for tuning.
+% Its result matrices are also written to files in the /data/results/
+% folder.
+
 %% Initialize MATLAB state
 clear
 clc
@@ -7,7 +18,7 @@ tic
 % processed.  This may change depending on which computer is running the
 % code.  If this file is in the capstone\matlab directory, the correct
 % relative path is capstone\data\arduino
-cd C:\Users\Todd\Documents\GitHub\SHAF\Capstone\data\arduino
+cd N:\SHAF\Capstone\data\arduino
 
 % Directory to store results (FATIGUE and BT mode only)
 d = '..\results\';

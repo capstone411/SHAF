@@ -1,5 +1,5 @@
 function [repCount, fatigueRep] = plotFile(fileName, ~, ~, ~)
-
+% This function plots the values of a given data file
 
 baselineF = 0.35;
 thresholdF = 0.60;

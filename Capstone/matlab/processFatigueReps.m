@@ -1,9 +1,14 @@
+% This script compiles the results of "FatigueReps" output files and
+% generates a single Nx3 output CSV file, where N is size of "fatigue"
+% array, column 1 is oberserved rep count for data set, column 2 is the rep
+% number that fatigue is first detected on, and column 3 is the difference
+% between columns 1 and 2.
+
 clc
 clear
 
 % Change the working directory
 cd  N:\SHAF\Capstone\data\results
-
 
 % Get list of rep counts files in working directory
 fatigueRepsList = dir('*fatigueReps.csv');
@@ -19,8 +24,11 @@ load('..\arduino\observedCount.mat')
 load('..\arduino\fatigue.mat')
 n = length(fatigue);
 
+% Four columns (ThresholdF, OC, FR, Diff)
+m = 4;
+
 % Create zeroed array to store loaded csv files
-S = zeros(16,4,p);
+S = zeros(n,m,p);
 
 for i = 1:p
     
@@ -30,8 +38,7 @@ for i = 1:p
     
     if found
         fprintf('%s\t\t%d\n',[subject set], count)        
-        S(:,:,i) = csvread(fatigueRepsList(i).name);
-        %S(:,:,i) = abs(count - S(:,:,i)); 
+        S(:,:,i) = csvread(fatigueRepsList(i).name);         
     end
     
 end
