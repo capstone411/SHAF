@@ -64,7 +64,6 @@ class LiveViewController: UIViewController {
             self.RepCount.text = notification.userInfo?["repCount"] as? String
             }
         }
-        //self.RepCount.text = notification.userInfo?["repCount"] as! String
     }
     
     func fatigue (notification: NSNotification) {
@@ -89,7 +88,7 @@ class LiveViewController: UIViewController {
             BLEDiscovery.startStopData(false)
             
             // assert the stop characteristic
-            BLEDiscovery.assertStop()
+            BLEDiscovery.assertStop(false)
         
             // go to next view controller to display
             // number of reps, time it took to perform

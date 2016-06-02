@@ -44,6 +44,7 @@ class CalibrationViewController: UIViewController {
             self.startCalibButton.setTitle("Calibrating..", forState: .Normal)
             self.startCalibButton.enabled = false
             BLEDiscovery.calibrate(true)
+            BLEDiscovery.assertStop(true)
         }
     }
     
