@@ -85,8 +85,11 @@ class LiveViewController: UIViewController {
     
     @IBAction func doneButtonClicked(sender: AnyObject) {
         dispatch_async(dispatch_get_main_queue()) {
-            // send stop signal
+            // clear start characteristic
             BLEDiscovery.startStopData(false)
+            
+            // assert the stop characteristic
+            BLEDiscovery.assertStop()
         
             // go to next view controller to display
             // number of reps, time it took to perform

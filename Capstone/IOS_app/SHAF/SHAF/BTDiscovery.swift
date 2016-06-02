@@ -20,6 +20,7 @@ let REC_FATIGUE_CHARACTERISTIC_UUID      = CBUUID(string: "2a3a")
 let REC_TIMEOUT_CHARACTERISTIC_UUID      = CBUUID(string: "2a3b")
 let SEND_CALIB_START_CHARACTERISTIC_UUID = CBUUID(string: "2a3c")
 let SEND_START_CHARACTERISTIC_UUID       = CBUUID(string: "2a3d")
+let SEND_STOP_CHARACTERISTIC_UUID        = CBUUID(string: "2a3e")
 
 class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     
@@ -69,6 +70,9 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
             else if characteristic.UUID == SEND_START_CHARACTERISTIC_UUID {
                 self.characteristics["SEND_START_CHARACTERISTIC"] = characteristic
             }
+            else if characteristic.UUID == SEND_STOP_CHARACTERISTIC_UUID {
+                self.characteristics["SEND_STOP_CHARACTERISTIC"] = characteristic
+            }
             else if characteristic.UUID == REC_REP_COUNT_CHARACTERISTIC_UUID {
                 self.characteristics["REC_REP_COUNT_CHARACTERISTIC"] = characteristic
             }
@@ -116,6 +120,16 @@ class BTDiscovery: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         print("Start flag: ", startValue)
 
         self.peripheralBLE?.writeValue(startByte, forCharacteristic: self.characteristics["SEND_START_CHARACTERISTIC"]!, type: CBCharacteristicWriteType.WithResponse)
+    }
+    
+    // asserts the stop flag when called
+    func assertStop() {
+        var stopValue = 1
+        let stopByte = NSData(bytes: &stopValue, length: sizeof(UInt8))
+        
+        
+        // update value
+        self.peripheralBLE?.writeValue(stopByte, forCharacteristic: self.characteristics["SEND_STOP_CHARACTERISTIC"]!, type: CBCharacteristicWriteType.WithResponse)
     }
     
     
