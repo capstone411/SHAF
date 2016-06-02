@@ -1,5 +1,7 @@
 function outputArray = tuneFatigue(fileName, baseline, threshold, ...
     fatigueThresholdArray)
+% This is the function that runs processFile multiple times using different
+% values for baselineF and thresholdF.  
 
 n = length(fatigueThresholdArray);
 

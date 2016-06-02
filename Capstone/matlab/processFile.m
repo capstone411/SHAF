@@ -1,4 +1,18 @@
 function [repCount, fatigueRep] = processFile(fileName, baselineF, thresholdF, fatigueF)
+% This is the primary function for processing an individual data set.
+%
+% Inputs:
+%   fileName   - string containing name of file to be processed
+%   baselineF  - fraction of first rep peak to use as baseline for
+%                subsequent reps
+%   thresholdF - fraction of first rep peak to use as threshold for
+%                subsequent reps
+%   fatigueF   - fraction used as threshold for detecting fatigue
+%
+% Outputs:
+%   repCount   - total number of reps detected
+%   fatigueRep - rep number on which fatigue is first detected
+
 %% Open the text file.
 fileID = fopen(fileName,'r');
 

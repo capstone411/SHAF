@@ -1,4 +1,6 @@
 function repArray = tuneRep(filename, baselineArray, thresholdArray, fatigueF)
+% This is the function that runs processFile multiple times using different
+% values for fatigueF.  
 
 f = char(filename);
 

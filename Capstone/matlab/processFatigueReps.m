@@ -1,8 +1,9 @@
 % This script compiles the results of "FatigueReps" output files and
-% generates a single Nx3 output CSV file, where N is size of "fatigue"
-% array, column 1 is oberserved rep count for data set, column 2 is the rep
-% number that fatigue is first detected on, and column 3 is the difference
-% between columns 1 and 2.
+% generates a single Nx4 output CSV file, where N is size of "fatigue"
+% array, column 1 is the threshold fraction use for processing, column 2 is
+% oberserved rep count for data set, column 3 is the rep number that
+% fatigue is first detected on, and column 4 is the difference between
+% columns 2 and 3.
 
 clc
 clear

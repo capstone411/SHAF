@@ -1,3 +1,7 @@
+% This script compiles the "repCount" output files to create a result
+% matrix which can be used to interpret the ideal baseline and threshold
+% fractions to use for rep detection
+
 clc
 clear
 
