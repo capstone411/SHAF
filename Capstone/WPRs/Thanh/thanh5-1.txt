@@ -1,0 +1,6 @@
+What I've done this week:
+- Fix bugs
+- Add button interrupt to controll the main program
+
+What I will do next wekk:
+- Work with Hai to add bluetooth communication

@@ -1,0 +1,13 @@
+What I've done this week:
+- Fixing the problem with calibration part
+- Reviewing the 1st draft of the poster
+- Working on isometric exercise
+- Working on restrospective project schedule
+
+What I will do next week:
+- Finishing isometric exercise code in Arduino
+- Reviewing the poster before sending it
+- Creating ppt for final presenation
+
+Obstacle:
+- Having bug with timeout flag 

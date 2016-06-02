@@ -1,0 +1,8 @@
+What I've done this week:
+- Review Hai's bluetooth documentation
+- Update flow charts for communication between Arduino and iPhone 
+- Work with Hai to add bluetooth code into main program
+
+What I will do next week:
+- Work on poster
+- Write code for isometric exercise on Arduino

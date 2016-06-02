@@ -1,0 +1,11 @@
+What I've done this week:
+- Finishing 50% of the poster
+- Updating flow charts 
+- Fixing bugs in the main program
+
+What I will do next week:
+- Finishing the poster
+- Implement isometric exercise
+
+Obstacle:
+- Arduino keeps going back to calibration part
